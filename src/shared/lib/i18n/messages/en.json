@@ -1,0 +1,28 @@
+{
+    "calendar": {
+        "days": {
+            "short": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        },
+        "months": {
+            "long": {
+                "0": "january",
+                "1": "february",
+                "2": "march",
+                "3": "april",
+                "4": "may",
+                "5": "june",
+                "6": "july",
+                "7": "august",
+                "8": "september",
+                "9": "october",
+                "10": "november",
+                "11": "december"
+            }
+        }
+    },
+    "navigation": {
+        "schedule": "Schedule",
+        "grade": "Grades",
+        "profile": "Profile"
+    }
+}

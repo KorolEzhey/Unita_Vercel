@@ -1,0 +1,22 @@
+@import "@/shared/styles/theme/mixins";
+.root {
+    padding-top: 24px;
+    padding-bottom: 0;
+    @include container-padding;
+    box-sizing: border-box;
+    background: var(--background-paper);
+}
+
+.item {
+    background: var(--background-secondary);
+    border-radius: var(--border-radius-lg);
+    margin-bottom: 16px;
+    padding-top: 16px;
+    padding-bottom: 20px;
+    padding-left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}

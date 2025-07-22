@@ -1,0 +1,34 @@
+@use "@/shared/styles/theme/mixins" as mix;
+
+.button {
+    padding: 8px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+    width: 100%; // занимать всю доступную ширину контейнера
+    color: var(--dark-grey);
+
+    &:hover {
+        color: var(--secondary-color);
+    }
+
+    &.active {
+        color: var(--secondary-color);
+    }
+}
+
+.icon {
+    width: 20px !important; // было 16px
+    height: 20px !important; // было 24px
+    color: currentColor;
+    fill: currentColor;
+}
+
+.icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: currentColor;
+    color: currentColor;
+}

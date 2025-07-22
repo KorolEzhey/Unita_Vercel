@@ -1,0 +1,64 @@
+@mixin transition-colors {
+    transition:
+        color 0.15s ease,
+        background-color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+@mixin transition-transform {
+    transition:
+        opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@mixin transition-standard {
+    transition:
+        background 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        border 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin container {
+    width: 100%;
+    max-width: 1240px;
+    padding-right: $desktop-padding;
+    padding-left: $desktop-padding;
+    margin: 0 auto;
+
+    @include mobile {
+        padding-right: $mobile-padding;
+        padding-left: $mobile-padding;
+    }
+}
+
+$desktop-padding: 24px;
+$mobile-padding: 20px;
+
+@mixin container-padding {
+    padding-right: $desktop-padding;
+    padding-left: $desktop-padding;
+
+    @media (max-width: 600px) {
+        padding-right: $mobile-padding;
+        padding-left: $mobile-padding;
+    }
+}
+
+$link-font-size: 14px;
+
+@mixin animation-transition {
+    transition: color 0.2s;
+}
+
+@mixin active-link {
+    font-size: 14px;
+    color: var(--dark-grey);
+    cursor: pointer;
+    @include animation-transition;
+}
