@@ -15,12 +15,14 @@ export const NavBar = () => {
     const t = useTranslations("navigation");
 
     const handleNavigate = (route: string) => (): void => {
-        if (!pathname.includes(route)) {
+        if (pathname && !pathname.includes(route)) {
             router.push(route);
         }
     };
 
-    const isActive = (route: string): boolean => pathname.includes(route);
+    const isActive = (route: string): boolean => {
+        return pathname ? pathname.includes(route) : false;
+    };
 
     return (
         <div className={s.root}>
