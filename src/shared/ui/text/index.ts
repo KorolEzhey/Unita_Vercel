@@ -1,2 +1,2 @@
-export { mockLessons } from "./lesson";
-export { ScheduleText } from "./ScheduleText";
+export { mockLessons } from './lesson';
+export { ScheduleText } from './ScheduleText';

@@ -1,1 +1,1 @@
-export { ChangePhotoButton } from "./ui/ChangePhotoButton";
+export { ChangePhotoButton } from './ui/ChangePhotoButton';

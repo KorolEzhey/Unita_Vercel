@@ -1,1 +1,1 @@
-export { default } from "./ui/GradePage";
+export { default } from './ui/GradePage';

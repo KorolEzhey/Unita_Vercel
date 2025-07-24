@@ -1,1 +1,1 @@
-export { ProgressTable } from "./ui/ProgressTable";
+export { ProgressTable } from './ui/ProgressTable';

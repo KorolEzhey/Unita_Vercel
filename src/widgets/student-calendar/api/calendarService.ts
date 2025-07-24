@@ -1,15 +1,15 @@
-import { type CalendarApi, calendarApi } from "@/shared/api";
+import { type CalendarApi, calendarApi } from '@/shared/api';
 
 export class CalendarService {
-    private api: CalendarApi;
+  private api: CalendarApi;
 
-    constructor(api: CalendarApi = calendarApi) {
-        this.api = api;
-    }
+  constructor(api: CalendarApi = calendarApi) {
+    this.api = api;
+  }
 
-    async selectDate(date: Date): Promise<void> {
-        await this.api.selectDate(date);
-    }
+  async selectDate(date: Date): Promise<void> {
+    await this.api.selectDate(date);
+  }
 }
 
 export const calendarService = new CalendarService();

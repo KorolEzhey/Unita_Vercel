@@ -98,6 +98,17 @@ export default [
             "import/no-duplicates": "error",
 
             // Доступность
+            // Prettier
+            "prettier/prettier": ["error", {
+                endOfLine: "auto",
+                semi: true,
+                singleQuote: true,
+                tabWidth: 2,
+                trailingComma: "es5",
+                printWidth: 80,
+                bracketSpacing: true,
+                arrowParens: "always"
+            }],
             "jsx-a11y/alt-text": "warn",
             "jsx-a11y/aria-props": "warn",
             "jsx-a11y/aria-proptypes": "warn",
@@ -113,7 +124,13 @@ export default [
             "sort-imports": "off",
 
             // Правило Prettier должно быть последним!
-            "prettier/prettier": ["error", {}, { usePrettierrc: true }],
+            "prettier/prettier": ["error", {
+                endOfLine: "auto",
+                semi: true,
+                singleQuote: true,
+                tabWidth: 2,
+                trailingComma: "es5"
+            }],
         },
     },
 ];

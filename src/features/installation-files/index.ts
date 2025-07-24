@@ -1,1 +1,1 @@
-export { FileInstallButton } from "./ui/FileInstallButton";
+export { FileInstallButton } from './ui/FileInstallButton';

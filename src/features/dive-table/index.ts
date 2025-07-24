@@ -1,1 +1,1 @@
-export { DiveTable } from "./ui/DiveTable";
+export { DiveTable } from './ui/DiveTable';
