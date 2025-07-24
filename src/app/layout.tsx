@@ -28,12 +28,13 @@ export const metadata: Metadata = {
 
 type Props = {
     children: React.ReactNode;
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 };
 
 export default async function LocaleLayout(props: Props) {
     const { children } = props;
-    const { locale } = await Promise.resolve(props.params); // асинхронный доступ к params
+    const params = await props.params;
+    const { locale } = params;
 
     if (!["ru", "en"].includes(locale)) notFound();
 
