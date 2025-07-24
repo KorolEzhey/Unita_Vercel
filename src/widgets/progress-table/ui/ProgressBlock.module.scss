@@ -1,8 +1,8 @@
 @use "@/shared/styles/theme/mixins" as mix;
 
 .progressBlock {
-    min-width: 56px;
-    max-width: 56px;
+    min-width: 60px;
+    max-width: 60px;
     min-height: 36px;
     max-height: 36px;
     border-radius: 8px;
@@ -13,11 +13,14 @@
     @include mix.transition-standard;
     cursor: pointer;
     user-select: none;
-    padding: 8px 10px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 120%;
+    padding: 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 40px;
     box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &:hover {
         opacity: 0.8;
