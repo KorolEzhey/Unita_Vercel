@@ -1,0 +1,44 @@
+@use "@/shared/styles/theme/mixins" as mix;
+
+.button {
+    padding: 8px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+    width: 100%;
+    color: var(--dark-grey);
+
+    &:hover {
+        color: var(--secondary-color);
+    }
+
+    &.active {
+        color: var(--secondary-color);
+    }
+
+    &.desktop {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 12px;
+        width: 100%;
+        border-radius: 10px;
+
+        &.active {
+            background-color: var(--background-navbar-button);
+        }
+
+        .text {
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+}
+.text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    text-align: center;
+}

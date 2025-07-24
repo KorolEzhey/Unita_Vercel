@@ -1,0 +1,30 @@
+@use "@/shared/styles/theme/mixins" as mix;
+
+.progressBlock {
+    min-width: 56px;
+    max-width: 56px;
+    min-height: 36px;
+    max-height: 36px;
+    border-radius: 8px;
+    background: var(--progress-light-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include mix.transition-standard;
+    cursor: pointer;
+    user-select: none;
+    padding: 8px 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    box-sizing: border-box;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.selected {
+    background: var(--primary-color);
+    color: var(--light-color);
+}

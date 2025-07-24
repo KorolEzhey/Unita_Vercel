@@ -1,0 +1,41 @@
+.button {
+    color: var(--foreground);
+    white-space: nowrap;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    width: 100%;
+    padding: 10px 0;
+    position: relative;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: var(--alert-color);
+    }
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.icon {
+    color: var(--alert-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    background-color: var(--alert-color);
+    padding: 6px 8px 6px 4px;
+    border-radius: 10px;
+    path {
+        stroke: white;
+        stroke-width: 2px;
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+}

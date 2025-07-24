@@ -1,0 +1,44 @@
+.root {
+    height: 100vh;
+    width: 260px;
+    background: var(--light-color);
+    border-right: 1px solid var(--alt-light-grey);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 8px;
+    justify-content: space-between;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    & > * {
+        flex: 0 0 auto;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.bottom {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+
+    & > * {
+        flex: 0 0 auto;
+        width: 40px;
+        height: 50px;
+    }
+}
+
+.profile {
+    background-color: #f5f6f7;
+}

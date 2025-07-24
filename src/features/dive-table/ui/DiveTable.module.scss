@@ -1,0 +1,119 @@
+@use "@/shared/styles/theme/mixins" as mix;
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: var(--background-paper);
+    border-radius: var(--border-radius-lg);
+}
+
+.header {
+    background: var(--progress-light-grey);
+
+    th {
+        height: 26px;
+        padding: 0 12px;
+        text-align: left;
+        font-weight: 500;
+        font-size: 12px;
+        color: var(--dark-grey);
+        border: 1px solid var(--alt-light-grey);
+
+        &:first-child {
+            width: 80px;
+        }
+        &:nth-child(2) {
+            width: 151px;
+        }
+        &:nth-child(3) {
+            width: 51px;
+        }
+        &:last-child {
+            width: auto;
+        }
+    }
+}
+
+.row {
+    @include mix.transition-standard;
+
+    &:hover {
+        background: var(--progress-light-grey);
+    }
+
+    td {
+        padding-left: 12px;
+        font-weight: 400;
+        color: var(--foreground);
+        border: 1px solid var(--alt-light-grey);
+        border-bottom: none;
+
+        &:first-child {
+            font-size: 14px;
+            color: var(--grey);
+        }
+        &:nth-child(2) {
+            font-size: 14px;
+            color: var(--dark-grey);
+        }
+        &:nth-child(3) {
+            font-size: 16px;
+        }
+    }
+
+    &.average-row {
+        td {
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            background-image: linear-gradient(
+                to right,
+                var(--grey-dotted-line) 8px,
+                transparent 0
+            );
+            background-position: 0 -0.5px;
+            background-size: 16px 1px;
+            background-repeat: repeat-x;
+            border-bottom: 1px solid var(--alt-light-grey);
+        }
+
+        td:first-child {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--dark-grey);
+        }
+        td:nth-child(3) {
+            font-weight: 500;
+            border: 1px solid var(--alt-light-grey);
+            border-top: none;
+            background-image: linear-gradient(
+                to right,
+                var(--grey-dotted-line) 8px,
+                transparent 0
+            );
+            background-position: 8px -0.5px;
+            background-size: 16px 1px;
+            background-repeat: repeat-x;
+        }
+    }
+}
+
+.row td {
+    &:nth-child(3) {
+        font-size: 16px;
+
+        &.grade-red {
+            background-color: var(--grade-red);
+        }
+        &.grade-orange {
+            background-color: var(--grade-orange);
+        }
+        &.grade-yellow {
+            background-color: var(--grade-yellow);
+        }
+        &.grade-green {
+            background-color: var(--grade-green);
+        }
+    }
+}

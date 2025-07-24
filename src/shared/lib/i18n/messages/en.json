@@ -1,0 +1,61 @@
+{
+    "lesson": {
+        "topic": "Lesson Topic",
+        "description": "Description",
+        "materials": "Materials"
+    },
+    "calendar": {
+        "days": {
+            "short": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        },
+        "months": {
+            "long": {
+                "0": "january",
+                "1": "february",
+                "2": "march",
+                "3": "april",
+                "4": "may",
+                "5": "june",
+                "6": "july",
+                "7": "august",
+                "8": "september",
+                "9": "october",
+                "10": "november",
+                "11": "december"
+            }
+        }
+    },
+    "table": {
+        "week": "Week",
+        "subject": "Subject",
+        "grade": "Grade"
+    },
+    "navigation": {
+        "schedule": "Schedule",
+        "grade": "Grades",
+        "profile": "Profile",
+        "grade-book": "GradeBooks"
+    },
+    "buttons": {
+        "logout": "Log out",
+        "installFile": "Install file",
+        "changePhoto": "Change photo",
+        "profile": "Profile"
+    },
+    "quarters": {
+        "q1": "Q 1",
+        "q2": "Q 2",
+        "q3": "Q 3",
+        "q4": "Q 4",
+        "q5": "Q 5",
+        "q6": "Q 6",
+        "q7": "Q 7",
+        "final": "Final"
+    },
+    "dive_table": {
+        "week": "Week",
+        "subject": "Subject",
+        "mark": "Grade",
+        "average": "Average"
+    }
+}

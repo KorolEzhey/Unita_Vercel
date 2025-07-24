@@ -1,0 +1,21 @@
+.root {
+    width: 100%;
+    background: var(--light-color);
+    border-top: 1px solid var(--alt-light-grey);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.navigation_wrapper {
+    display: flex;
+    justify-content: space-around;
+    height: 56px;
+    padding: 0 16px;
+
+    & > * {
+        flex: 0 0 auto;
+        width: 72px;
+    }
+}

@@ -1,0 +1,59 @@
+@use "@/shared/styles/theme/mixins" as mix;
+
+.gradeBlock {
+    min-width: 138px;
+    max-width: 138px;
+    min-height: 96px;
+    max-height: 96px;
+    flex: 0 0 138px;
+    border-radius: 16px;
+    background: var(--background-secondary);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    user-select: none;
+    @include mix.transition-standard;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &.grade-red {
+        background: var(--grade-red);
+    }
+
+    &.grade-orange {
+        background: var(--grade-orange);
+    }
+
+    &.grade-yellow {
+        background: var(--grade-yellow);
+    }
+
+    &.grade-green {
+        background: var(--grade-green);
+    }
+}
+
+.grade {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    padding: 8px 12px;
+}
+
+.subject {
+    color: var(--dark-grey);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    padding: 0 12px 4px;
+}
+
+.week {
+    color: var(--dark-grey);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    padding: 0 12px 12px;
+}
