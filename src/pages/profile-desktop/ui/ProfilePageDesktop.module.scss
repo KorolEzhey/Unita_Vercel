@@ -1,0 +1,24 @@
+.container {
+  display: grid;
+  grid-template-columns: 260px minmax(400px, 1fr);
+  grid-template-rows: 64px 1fr;
+  height: 100vh;
+}
+
+.sidebar {
+  grid-row: 1 / span 2;
+}
+
+.topbar {
+  background-color: var(--background);
+  border-bottom: 1px solid var(--alt-light-grey);
+  display: flex;
+  align-items: center;
+  padding-inline: 24px;
+  gap: 24px;
+}
+
+.content {
+  background-color: var(--background-page);
+  padding: 24px;
+}

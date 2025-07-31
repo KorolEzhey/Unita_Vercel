@@ -1,1 +1,1 @@
-export { LessonPage } from './ui/LessonPage';
+export { LessonPage } from "./ui/LessonPage";

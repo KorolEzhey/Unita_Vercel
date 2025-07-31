@@ -1,4 +1,4 @@
-@import "@/shared/styles/theme/mixins.scss";
+@use "@/shared/styles/theme/mixins" as mix;
 
 .root {
     width: 100%;

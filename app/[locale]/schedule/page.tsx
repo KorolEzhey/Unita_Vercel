@@ -1,5 +1,5 @@
-import '@/shared/styles/global.scss';
-import '@/app/layout.tsx';
-import '@/app/favicon.ico';
+import "@/shared/styles/global.scss";
+import "@/app/layout.tsx";
+import "@/app/favicon.ico";
 
-export { default } from '@/pages/schedule';
+export { default } from "@/pages/schedule";

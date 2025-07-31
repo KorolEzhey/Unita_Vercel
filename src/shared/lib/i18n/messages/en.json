@@ -1,4 +1,15 @@
 {
+    "auth": {
+        "title": "Sign In",
+        "login": "Login",
+        "password": "Password",
+        "submit": "Sign In",
+        "loading": "Loading...",
+        "errors": {
+            "emptyFields": "Please fill in all fields",
+            "loginError": "Invalid login or password"
+        }
+    },
     "lesson": {
         "topic": "Lesson Topic",
         "description": "Description",
@@ -34,7 +45,8 @@
         "schedule": "Schedule",
         "grade": "Grades",
         "profile": "Profile",
-        "grade-book": "GradeBooks"
+        "grade-book": "GradeBooks",
+        "logout": "Log out"
     },
     "buttons": {
         "logout": "Log out",
@@ -43,13 +55,13 @@
         "profile": "Profile"
     },
     "quarters": {
-        "q1": "Q 1",
-        "q2": "Q 2",
-        "q3": "Q 3",
-        "q4": "Q 4",
-        "q5": "Q 5",
-        "q6": "Q 6",
-        "q7": "Q 7",
+        "q1": "1 Dive",
+        "q2": "2 Dive",
+        "q3": "3 Dive",
+        "q4": "4 Dive",
+        "q5": "5 Dive",
+        "q6": "6 Dive",
+        "q7": "7 Dive",
         "final": "Final"
     },
     "dive_table": {
@@ -57,5 +69,8 @@
         "subject": "Subject",
         "mark": "Grade",
         "average": "Average"
+    },
+    "profile": {
+        "study-load": "Study load"
     }
 }

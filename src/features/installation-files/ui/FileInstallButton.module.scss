@@ -7,8 +7,13 @@
     width: 100%;
     padding: 28px 0 12px 0;
     border-bottom: 1px solid var(--alt-light-grey);
-    &:hover {
-        color: var(--secondary-color);
+
+    &.desktop {
+        font-size: 14px;
+        border-bottom: none;
+        padding: 8px 0 12px 0;
+        color: #0095FF;
+        font-weight: 400;
     }
 }
 
@@ -43,5 +48,10 @@
     svg {
         width: 100%;
         height: 100%;
+    }
+
+    &.desktop {
+        position: static;
+        margin-left: 100px;
     }
 }

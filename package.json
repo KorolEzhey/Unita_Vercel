@@ -27,8 +27,10 @@
         "normalize.css": "^8.0.1",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
+        "react-hook-form": "^7.61.1",
         "sass": "^1.89.2",
-        "ts-pattern": "^5.7.1"
+        "ts-pattern": "^5.7.1",
+        "zod": "^4.0.10"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",
@@ -42,7 +44,6 @@
         "eslint-config-next": "15.3.5",
         "eslint-plugin-prettier": "^5",
         "eslint-plugin-simple-import-sort": "^10",
-        "prettier": "^3.6.2",
         "steiger": "^0.5.8",
         "tailwindcss": "^4",
         "typescript": "^5"

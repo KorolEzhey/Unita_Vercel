@@ -1,0 +1,59 @@
+@use "@/shared/styles/theme/mixins" as mix;
+
+.root {
+    height: 242px;
+    max-width: 536px;
+    min-width: 320px;
+    background-color: var(--background);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.avatar {
+    flex-shrink: 0;
+    width: 104px;
+    height: 104px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-right: 16px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content {
+    display: flex;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-block-start: 12px;
+    gap: 16px;
+}
+
+.name {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.role {
+    font-size: 12px;
+    background-color: var(--background-role);
+    padding-inline: 8px;
+    border-radius: 8px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    color: var(--text-role);
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 24px;
+}
