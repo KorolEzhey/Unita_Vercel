@@ -1,6 +1,7 @@
 import InstallIcon from "@/shared/icons/Download.svg";
 import FileIcon from "@/shared/icons/File.svg";
 import { Button } from "@/shared/ui/button";
+
 import s from "./FileInstallButton.module.scss";
 import {
     buttonClassByResolution,
