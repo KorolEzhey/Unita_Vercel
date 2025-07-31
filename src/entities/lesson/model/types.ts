@@ -19,5 +19,6 @@ export type Lesson = {
     endTime: string;
     description?: string;
     classroom?: string;
+    weekPattern?: 1 | 2 | 3;
     topics: LessonTopic[];
 };

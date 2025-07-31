@@ -1,0 +1,68 @@
+.container {
+    min-height: 100vh;
+    background: #fff;
+    display: flex;
+}
+
+.sidebar {
+    width: 280px;
+    border-right: 1px solid #eaeaea;
+    height: 100vh;
+}
+
+.main {
+    flex: 1;
+    padding: 24px;
+}
+
+.scheduleContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    width: 100%;
+}
+
+.scheduleColumn {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+}
+
+.weekInfo {
+    font-size: 16px;
+    color: var(--dark-grey);
+}
+
+.scheduleType {
+    font-size: 14px;
+    color: var(--dark-grey);
+    font-style: italic;
+}
+
+.main {
+    flex: 1;
+    padding: 40px;
+    max-width: 1200px;
+    width: 100%;
+    margin-left: 280px;
+}
+
+.scheduleContainer {
+    width: 100%;
+}
+
+.scheduleColumn {
+    background: #fafafa;
+    padding: 24px;
+    border-radius: 12px;
+
+    h2 {
+        margin: 0 0 24px;
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--foreground);
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--primary-color);
+    }
+}

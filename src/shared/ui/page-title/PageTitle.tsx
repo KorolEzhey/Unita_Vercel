@@ -1,5 +1,4 @@
-import type { FC } from "react";
-
+import { FC } from "react";
 import s from "./PageTitle.module.scss";
 
 type PageTitleProps = { title: string };
