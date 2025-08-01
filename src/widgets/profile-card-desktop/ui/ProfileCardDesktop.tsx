@@ -1,11 +1,12 @@
+import Image from "next/image";
+import { useTranslations } from "next-intl";
 import type { FC } from "react";
 
-import s from "./ProfileCardDesktop.module.scss";
-import { User } from "@/entities/user/model/types";
-import UserIcon from "@/shared/icons/UserIcon.svg";
-import Image from "next/image";
+import type { User } from "@/entities/user/model/types";
 import { FileInstallButton } from "@/features/installation-files";
-import { useTranslations } from "next-intl";
+import UserIcon from "@/shared/icons/UserIcon.svg";
+
+import s from "./ProfileCardDesktop.module.scss";
 
 type ProfileCardProps = {
     user: User;

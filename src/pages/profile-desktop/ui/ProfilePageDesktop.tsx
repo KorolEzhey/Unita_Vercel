@@ -1,11 +1,13 @@
 "use client";
 import "@/shared/styles/global.scss";
-import s from "./ProfilePageDesktop.module.scss";
 
-import { NavBar } from "@/widgets/nav-bar-desktop";
-import { PageTitle } from "@/shared/ui/page-title";
 import { useTranslations } from "next-intl";
+
+import { PageTitle } from "@/shared/ui/page-title";
+import { NavBar } from "@/widgets/nav-bar-desktop";
 import { ProfileCardDesktop } from "@/widgets/profile-card-desktop";
+
+import s from "./ProfilePageDesktop.module.scss";
 
 const user = {
     id: "1",

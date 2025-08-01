@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import type { Lesson } from "@/entities/lesson";
 import { LessonPage } from "@/pages/lesson/ui/LessonPage";
 
