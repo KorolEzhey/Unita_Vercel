@@ -28,6 +28,9 @@ export default [
             parser: tsParser,
             parserOptions: {
                 ecmaVersion: "latest",
+                ecmaFeatures: {
+                    jsx: true,
+                },
                 sourceType: "module",
                 ecmaFeatures: { jsx: true },
                 project: "./tsconfig.json",
@@ -113,7 +116,9 @@ export default [
             "sort-imports": "off",
 
             // Правило Prettier должно быть последним!
-            "prettier/prettier": ["error", {}, { usePrettierrc: true }],
+            "prettier/prettier": ["error", {
+                endOfLine: "auto"
+            }, { usePrettierrc: true }],
         },
     },
 ];
