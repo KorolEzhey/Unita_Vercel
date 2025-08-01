@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 import LogoutIcon from "@/shared/icons/Logout.svg";
 import { Button } from "@/shared/ui/button";
@@ -7,9 +8,11 @@ import s from "./LogOutButton.module.scss";
 
 export const LogOutButton = () => {
     const t = useTranslations();
+    const router = useRouter();
+
     const handleLogout = () => {
-        // TODO: Реализовать логаут
-        console.warn("Выход из аккаунта");
+        // TODO: В будущем здесь можно добавить очистку состояния, токенов и т.д.
+        router.push("/");
     };
 
     return (
