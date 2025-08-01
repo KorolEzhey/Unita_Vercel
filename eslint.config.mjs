@@ -116,9 +116,13 @@ export default [
             "sort-imports": "off",
 
             // Правило Prettier должно быть последним!
-            "prettier/prettier": ["error", {
-                endOfLine: "auto"
-            }, { usePrettierrc: true }],
+            "prettier/prettier": [
+                "error",
+                {
+                    endOfLine: "auto",
+                },
+                { usePrettierrc: true },
+            ],
         },
     },
 ];
