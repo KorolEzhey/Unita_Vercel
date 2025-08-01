@@ -1,5 +1,5 @@
-import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 import LogoutIcon from "@/shared/icons/Logout.svg";
 import { Button } from "@/shared/ui/button";
