@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import { addDays } from "date-fns";
-import { observer } from "mobx-react-lite";
-import { match } from "ts-pattern";
 import useEmblaCarousel from "embla-carousel-react";
+import { observer } from "mobx-react-lite";
+import React, { useEffect, useState } from "react";
+import { match } from "ts-pattern";
 
 import { ScheduleList } from "@/widgets/schedule-list/ui/ScheduleList";
+
 import styles from "./ScheduleCarousel.module.scss";
 
 type DayType = "weekend" | "weekday";
