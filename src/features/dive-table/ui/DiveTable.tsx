@@ -51,6 +51,7 @@ export const DiveTable: FC<DiveTableProps> = ({ data }) => {
         }),
     ];
 
+    // Вычисление среднего балла
     const calculateAverageGrade = () => {
         const grades = data
             .map((row) => row.mark)

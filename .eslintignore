@@ -1,0 +1,15 @@
+*
+**/*.*
+src
+src/**/*
+*.ts
+*.tsx
+*.js
+*.jsx
+*.json
+*.css
+*.scss
+*.md
+node_modules
+.next
+public

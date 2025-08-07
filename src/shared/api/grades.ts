@@ -40,6 +40,7 @@ const mockGrades: Grade[] = [
 ];
 
 export const getGrades = async (): Promise<Grade[]> => {
+    // Имитация задержки сети
     await new Promise((resolve) => setTimeout(resolve, 500));
     return mockGrades;
 };

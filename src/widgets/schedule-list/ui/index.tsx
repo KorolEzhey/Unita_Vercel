@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import type { Lesson } from "@/entities/lesson";
 import { LessonPage } from "@/pages/lesson/ui/LessonPage";
 
-import s from "./ScheduleList.module.scss";
+import s from "./styles.module.scss";
 
 const mockLessons: Lesson[] = [
     {
@@ -11,8 +11,6 @@ const mockLessons: Lesson[] = [
         title: "Математика",
         teacher: "Иванова И.И.",
         classroom: "301",
-        class: "11А",
-        weekPattern: 1,
         startTime: "08:30",
         endTime: "11:10",
         topics: [
@@ -41,8 +39,6 @@ const mockLessons: Lesson[] = [
         title: "Русский язык",
         teacher: "Петров П.П.",
         classroom: "205",
-        class: "11А",
-        weekPattern: 1,
         startTime: "11:20",
         endTime: "14:00",
         topics: [
@@ -58,8 +54,6 @@ const mockLessons: Lesson[] = [
         title: "Физика",
         teacher: "Сидоров С.С.",
         classroom: "401",
-        class: "11А",
-        weekPattern: 1,
         startTime: "14:10",
         endTime: "16:50",
         topics: [

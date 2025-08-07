@@ -31,13 +31,17 @@ export const ProgressTable: FC = observer(() => {
 
     useEffect(() => {
         const initializeData = async () => {
+            // При монтировании сбрасываем состояние
             quartersStore.reset();
+            // Загружаем данные за первую четверть
             await quartersStore.selectQuarter(0, quarterIds[0]);
+            // Показываем анимацию только после загрузки данных
             setIsReady(true);
         };
 
         initializeData();
 
+        // При размонтировании сбрасываем состояние
         return () => {
             quartersStore.reset();
             setIsReady(false);

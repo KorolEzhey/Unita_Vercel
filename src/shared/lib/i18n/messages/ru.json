@@ -13,11 +13,7 @@
     "lesson": {
         "topic": "Тема урока",
         "description": "Описание",
-        "materials": "Материалы",
-        "dateTime": "Время и дата",
-        "subject": "Предмет",
-        "enterTopic": "Введите тему урока",
-        "enterDescription": "Введите описание урока"
+        "materials": "Материалы"
     },
     "calendar": {
         "days": {
@@ -56,10 +52,7 @@
     "buttons": {
         "logout": "Выйти из аккаунта",
         "installFile": "Установить файл",
-        "changePhoto": "Изменить фото",
-        "save": "Сохранить",
-        "delete": "Удалить",
-        "download": "Загрузить файл"
+        "changePhoto": "Изменить фото"
     },
     "quarters": {
         "q1": "1 Пог.",
