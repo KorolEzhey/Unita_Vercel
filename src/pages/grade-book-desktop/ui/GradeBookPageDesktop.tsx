@@ -1,20 +1,23 @@
 "use client";
 import "@/shared/styles/global.scss";
-import { PageTitle } from "@/shared/ui/page-title";
-import s from "./GradeBookPageDesktop.module.scss";
-import { NavBar } from "@/widgets/nav-bar-desktop";
+
 import { useTranslations } from "next-intl";
-import { SwitchGradeAttendance } from "@/features/switch-grade-attendance";
 import { useState } from "react";
-import { Select as SelectClass } from "@/shared/ui/select";
-import { SwitchGradesTypes } from "@/features/switch-grades-types";
-import { GradeTable } from "@/features/grade-table";
-import { GradeFinalTable } from "@/features/grade-final-table";
 import { match } from "ts-pattern";
+
 import { AttendanceTable } from "@/features/attendance-table";
-import { Attendance } from "@/features/attendance-table/model/types";
-import { FinalGrade } from "@/features/grade-final-table/model/types";
-import { Grade } from "@/features/grade-table/model/types";
+import type { Attendance } from "@/features/attendance-table/model/types";
+import { GradeFinalTable } from "@/features/grade-final-table";
+import type { FinalGrade } from "@/features/grade-final-table/model/types";
+import { GradeTable } from "@/features/grade-table";
+import type { Grade } from "@/features/grade-table/model/types";
+import { SwitchGradeAttendance } from "@/features/switch-grade-attendance";
+import { SwitchGradesTypes } from "@/features/switch-grades-types";
+import { PageTitle } from "@/shared/ui/page-title";
+import { Select as SelectClass } from "@/shared/ui/select";
+import { NavBar } from "@/widgets/nav-bar-desktop";
+
+import s from "./GradeBookPageDesktop.module.scss";
 
 export type Tab = "grades" | "attendance";
 export type GradesTypes = "all" | "final";

@@ -1,5 +1,5 @@
-import React from "react";
 import { useTranslations } from "next-intl";
+import React from "react";
 
 import { type Lesson } from "@/entities/lesson";
 import CalendarIcon from "@/shared/icons/Calendar.svg";

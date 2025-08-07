@@ -1,8 +1,10 @@
-import { useTranslations } from "next-intl";
-import s from "./SwitchGradesTypes.module.scss";
-import { GradesTypes } from "@/pages/grade-book-desktop/ui/GradeBookPageDesktop";
-import { SwitchButton } from "@/shared/ui/switch";
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
+
+import type { GradesTypes } from "@/pages/grade-book-desktop/ui/GradeBookPageDesktop";
+import { SwitchButton } from "@/shared/ui/switch";
+
+import s from "./SwitchGradesTypes.module.scss";
 
 type SwitchGradesTypesProps = {
     activeGradeType: GradesTypes;

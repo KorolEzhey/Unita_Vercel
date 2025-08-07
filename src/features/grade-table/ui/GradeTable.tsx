@@ -1,17 +1,20 @@
-import s from "./GradeTable.module.scss";
 import {
-    useReactTable,
-    getCoreRowModel,
     flexRender,
+    getCoreRowModel,
+    useReactTable,
 } from "@tanstack/react-table";
 import clsx from "clsx";
-import { FC, useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
-import { getColumns } from "./columns";
-import { Grade } from "../model/types";
-import { getGradeClass } from "@/shared/lib/getGradeClass";
 import { observer } from "mobx-react-lite";
+import { useTranslations } from "next-intl";
+import type { FC } from "react";
+import { useEffect, useState } from "react";
+
+import { getGradeClass } from "@/shared/lib/getGradeClass";
+
 import { gradeStore } from "../model/gradeStore";
+import type { Grade } from "../model/types";
+import { getColumns } from "./columns";
+import s from "./GradeTable.module.scss";
 
 type GradeTableProps = {
     data: Grade[];
@@ -55,7 +58,7 @@ export const GradeTable: FC<GradeTableProps> = observer(
                     </tr>
 
                     <tr>
-                        <th colSpan={1}></th>
+                        <th colSpan={1} />
                         {subjectsByWeek.map(({ week, subject }) => (
                             <th
                                 key={`subject-${week}`}

@@ -1,17 +1,20 @@
-import s from "./GradeFinalTable.module.scss";
 import {
-    useReactTable,
-    getCoreRowModel,
     flexRender,
+    getCoreRowModel,
+    useReactTable,
 } from "@tanstack/react-table";
 import clsx from "clsx";
-import { FC, useEffect } from "react";
-import { useTranslations } from "next-intl";
-import { FinalGrade } from "../model/types";
-import { getColumns } from "./columns";
-import { getGradeClass } from "@/shared/lib/getGradeClass";
 import { observer } from "mobx-react-lite";
+import { useTranslations } from "next-intl";
+import type { FC } from "react";
+import { useEffect } from "react";
+
+import { getGradeClass } from "@/shared/lib/getGradeClass";
+
 import { gradeFinalStore } from "../model/gradeFinalStore";
+import type { FinalGrade } from "../model/types";
+import { getColumns } from "./columns";
+import s from "./GradeFinalTable.module.scss";
 
 type GradeFinalTableProps = {
     data: FinalGrade[];
@@ -44,7 +47,7 @@ export const GradeFinalTable: FC<GradeFinalTableProps> = observer(
                         <th colSpan={2} rowSpan={1} className={s.classHeader}>
                             {t("class")}: {selectedClass}
                         </th>
-                        <th colSpan={1}></th>
+                        <th colSpan={1} />
                         {subjects.map((subject) => (
                             <th
                                 key={subject}

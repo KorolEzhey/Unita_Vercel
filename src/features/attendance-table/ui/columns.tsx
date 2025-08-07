@@ -1,6 +1,8 @@
-import { createColumnHelper, Row } from "@tanstack/react-table";
+import type { Row } from "@tanstack/react-table";
+import { createColumnHelper } from "@tanstack/react-table";
+
+import type { Attendance } from "../model/types";
 import s from "./AttendanceTable.module.scss";
-import { Attendance } from "../model/types";
 
 const columnHelper = createColumnHelper<Attendance>();
 

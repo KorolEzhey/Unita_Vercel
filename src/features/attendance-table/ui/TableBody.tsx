@@ -1,7 +1,9 @@
-import { flexRender, Table } from "@tanstack/react-table";
+import type { Table } from "@tanstack/react-table";
+import { flexRender } from "@tanstack/react-table";
 import clsx from "clsx";
+
+import type { Attendance } from "../model/types";
 import s from "./AttendanceTable.module.scss";
-import { Attendance } from "../model/types";
 
 type Props = {
     table: Table<Attendance>;

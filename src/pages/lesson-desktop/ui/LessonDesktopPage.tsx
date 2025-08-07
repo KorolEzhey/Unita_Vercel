@@ -1,11 +1,11 @@
-import React from "react";
 import { useTranslations } from "next-intl";
+import React from "react";
 
 import { type Lesson } from "@/entities/lesson";
 import { UploadFiles } from "@/features/upload-files";
+import DoubleArrowLeftIcon from "@/shared/icons/DoubleArrowLeft.svg";
 import { type DayInfo } from "@/shared/lib/constants";
 import { ActionButton } from "@/shared/ui/action-button/ActionButton";
-import DoubleArrowLeftIcon from "@/shared/icons/DoubleArrowLeft.svg";
 import { LessonInfoDesktop } from "@/widgets/lesson-info-desktop";
 
 import s from "./LessonDesktopPage.module.scss";

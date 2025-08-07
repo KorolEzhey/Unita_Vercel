@@ -1,7 +1,9 @@
 import { useTranslations } from "next-intl";
-import s from "./SwitchGradeAttendance.module.scss";
-import { Tab } from "@/pages/grade-book-desktop/ui/GradeBookPageDesktop";
+
+import type { Tab } from "@/pages/grade-book-desktop/ui/GradeBookPageDesktop";
 import { SwitchButton } from "@/shared/ui/switch";
+
+import s from "./SwitchGradeAttendance.module.scss";
 
 type SwitchGradeAttendanceProps = {
     activeTab: Tab;

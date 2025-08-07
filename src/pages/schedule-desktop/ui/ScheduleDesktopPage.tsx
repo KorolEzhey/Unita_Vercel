@@ -6,8 +6,8 @@ import React, { useState } from "react";
 
 import { type Lesson } from "@/entities/lesson";
 import LessonDesktopPage from "@/pages/lesson-desktop";
-import { type DayInfo } from "@/shared/lib/constants";
 import CalendarIcon from "@/shared/icons/Calendar.svg";
+import { type DayInfo } from "@/shared/lib/constants";
 import { TeacherSelect } from "@/shared/ui/teacher-select/TeacherSelect";
 import { NavBar } from "@/widgets/nav-bar-desktop";
 import { ScheduleCarousel } from "@/widgets/schedule-carousel";

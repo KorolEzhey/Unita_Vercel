@@ -1,4 +1,5 @@
 import React from "react";
+
 import s from "./TeacherSelect.module.scss";
 
 export type TeacherSelectProps = {

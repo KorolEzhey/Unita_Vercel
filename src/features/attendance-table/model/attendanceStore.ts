@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { Attendance } from "./types";
+
+import type { Attendance } from "./types";
 
 export class AttendanceStore {
     tableData: Attendance[] = [];

@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { FinalGrade } from "./types";
+
+import type { FinalGrade } from "./types";
 
 export class GradeFinalStore {
     tableData: FinalGrade[] = [];
@@ -17,7 +18,9 @@ export class GradeFinalStore {
             if (student.studentId !== studentId) return student;
 
             const updatedGrades = [...student.grades];
-            const gradeIndex = updatedGrades.findIndex((g) => g.subject === subject);
+            const gradeIndex = updatedGrades.findIndex(
+                (g) => g.subject === subject
+            );
 
             if (gradeIndex !== -1) {
                 updatedGrades[gradeIndex] = {

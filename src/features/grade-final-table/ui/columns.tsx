@@ -1,6 +1,8 @@
-import { createColumnHelper, Row } from "@tanstack/react-table";
+import type { Row } from "@tanstack/react-table";
+import { createColumnHelper } from "@tanstack/react-table";
+
+import type { FinalGrade } from "../model/types";
 import s from "./GradeFinalTable.module.scss";
-import { FinalGrade } from "../model/types";
 
 const columnHelper = createColumnHelper<FinalGrade>();
 

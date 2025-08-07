@@ -1,13 +1,15 @@
-import s from "./AttendanceTable.module.scss";
-import { useReactTable, getCoreRowModel } from "@tanstack/react-table";
-import { FC, useEffect } from "react";
-import { useTranslations } from "next-intl";
-import { getColumns } from "./columns";
-import { Attendance } from "../model/types";
-import { TableHeader } from "./TableHeader";
-import { TableBody } from "./TableBody";
-import { attendanceStore } from "../model/attendanceStore";
+import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { observer } from "mobx-react-lite";
+import { useTranslations } from "next-intl";
+import type { FC } from "react";
+import { useEffect } from "react";
+
+import { attendanceStore } from "../model/attendanceStore";
+import type { Attendance } from "../model/types";
+import s from "./AttendanceTable.module.scss";
+import { getColumns } from "./columns";
+import { TableBody } from "./TableBody";
+import { TableHeader } from "./TableHeader";
 
 type AttendanceTableProps = {
     data: Attendance[];

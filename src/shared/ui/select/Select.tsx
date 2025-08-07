@@ -1,7 +1,10 @@
-import { FC, useState } from "react";
-import s from "./Select.module.scss";
-import UpArrow from "@/shared/icons/UpArrow.svg";
+import type { FC } from "react";
+import { useState } from "react";
+
 import DownArrow from "@/shared/icons/DownArrow.svg";
+import UpArrow from "@/shared/icons/UpArrow.svg";
+
+import s from "./Select.module.scss";
 
 type SelectProps = {
     selected: string;

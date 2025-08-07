@@ -1,7 +1,8 @@
-import React from "react";
-import s from "./AttendanceTable.module.scss";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
+import React from "react";
+
+import s from "./AttendanceTable.module.scss";
 import { getMonthsMap } from "./utils";
 
 type Props = {
@@ -27,7 +28,7 @@ export const TableHeader: React.FC<Props> = ({
                 <th colSpan={2} rowSpan={4} className={s.classHeader}>
                     {t("class")}: {selectedClass}
                 </th>
-                <th colSpan={1} style={{ borderRight: "none" }}></th>
+                <th colSpan={1} style={{ borderRight: "none" }} />
                 {Array.from(
                     monthsMap.entries() as Iterable<
                         [number, { name: string; colspan: number }]
@@ -73,7 +74,7 @@ export const TableHeader: React.FC<Props> = ({
             </tr>
 
             <tr>
-                <th colSpan={1}></th>
+                <th colSpan={1} />
                 {subjectsByDay.map((day, dayIndex) =>
                     day.subjects.map((subject, subjectIndex) => (
                         <th

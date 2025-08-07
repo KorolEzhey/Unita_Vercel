@@ -1,4 +1,5 @@
 import clsx from "clsx";
+
 import s from "./SwitchButton.module.scss";
 
 type SwitchButtonProps = {

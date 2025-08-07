@@ -1,7 +1,9 @@
-import React from "react";
 import { useTranslations } from "next-intl";
-import s from "./UploadFiles.module.scss";
+import React from "react";
+
 import TrashIcon from "@/shared/icons/Trash.svg";
+
+import s from "./UploadFiles.module.scss";
 
 type FileItem = {
     id: string;

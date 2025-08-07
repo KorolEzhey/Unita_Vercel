@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { Grade } from "./types";
+
+import type { Grade } from "./types";
 
 export class GradeStore {
     tableData: Grade[] = [];
