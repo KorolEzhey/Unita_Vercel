@@ -8,6 +8,7 @@ import EyeOpen from "@/shared/icons/Eye.svg";
 import EyeClosed from "@/shared/icons/Eye2.svg";
 import { Button } from "@/shared/ui/button";
 import { SpinnerWrapper } from "@/shared/ui/spinner/Spinner";
+import { LangSwitcher } from "./LangSwitcher";
 
 import styles from "./LoginForm.module.scss";
 
@@ -50,6 +51,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
 
     return (
         <div className={styles.formWrapper}>
+            <LangSwitcher />
             <div>
                 <h2 className={styles.title}>{t("title")}</h2>
             </div>
