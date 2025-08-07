@@ -37,3 +37,19 @@ export type DiveTableRow = {
 };
 
 export type DiveTableData = DiveTableRow[];
+
+export const WEEK_DAYS = {
+    1: "Пн",
+    2: "Вт",
+    3: "Ср",
+    4: "Чт",
+    5: "Пт",
+} as const;
+
+export type WeekDay = keyof typeof WEEK_DAYS;
+
+export type DayInfo = {
+    title: string;
+    dayNumber: WeekDay;
+    date: Date;
+};

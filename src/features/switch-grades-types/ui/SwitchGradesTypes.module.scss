@@ -1,0 +1,20 @@
+.wrapper {
+  width: 136px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.button {
+  background-color: var(--alt-light-grey);
+}
+
+.all {
+  width: 64px;
+}
+
+.results {
+  width: 64px;
+}

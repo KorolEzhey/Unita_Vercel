@@ -1,0 +1,115 @@
+.root {
+    height: 100%;
+    overflow: hidden;
+}
+
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+}
+
+.item {
+    flex: 1;
+    display: flex;
+    padding: 12px;
+    flex-direction: column;
+    gap: 6px;
+    align-self: stretch;
+    border-radius: 10px;
+    background: var(--background);
+    cursor: pointer;
+    &.active {
+        background: var(--Brand-blue-100, #e6f0ff);
+    }
+}
+
+.lessonNumber {
+    width: 21px;
+    color: var(--text-icons-neutral-500, #737373);
+    text-align: right;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    padding-bottom: 6px;
+}
+.headerContainer {
+    width: 100%;
+    height: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.timeContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--foreground);
+}
+
+.time {
+    color: var(--foreground);
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 115%;
+}
+
+.divider {
+    color: var(--text-secondary);
+}
+
+.classInfo {
+    width: 25px;
+    height: 18px;
+    color: var(--foreground);
+    font-family: Rubik;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%;
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.subject {
+    color: var(--grey);
+
+    font-family: Rubik;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 115%;
+}
+
+.noLessons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    color: var(--text-secondary);
+    font-size: 16px;
+    text-align: center;
+    background: var(--background-secondary);
+    border-radius: 12px;
+    margin: 16px;
+}

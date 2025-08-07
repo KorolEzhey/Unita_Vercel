@@ -1,68 +1,98 @@
-.container {
+.root {
     min-height: 100vh;
-    background: #fff;
-    display: flex;
+    background: var(--background);
 }
 
 .sidebar {
-    width: 280px;
-    border-right: 1px solid #eaeaea;
+    position: fixed;
+    left: 0;
+    top: 0;
     height: 100vh;
+    width: 260px;
+    z-index: 200;
+    background: var(--background);
 }
 
-.main {
+.content {
+    height: 100vh;
     flex: 1;
-    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    background: var(--light-grey);
+    margin-left: 260px;
+    overflow: auto;
 }
 
-.scheduleContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.pageHeader {
+    user-select: none;
     gap: 24px;
+    position: sticky;
+    top: 0;
+    z-index: 150;
+    display: flex;
     width: 100%;
+    height: 64px;
+    padding: 12px 60px 12px 24px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--alt-light-grey);
+    background: var(--background);
+}
+.calendarButton {
+    display: flex;
+    width: 128px;
+    height: 36px;
+    padding: 10px 12px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid var(--alt-light-grey);
+    background: var(--background);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.03);
+    margin-right: 24px;
+}
+.title {
+    color: var(--foreground);
+
+    font-family: Rubik;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
 }
 
-.scheduleColumn {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 16px;
+.teacherSelect {
+    margin-top: 4px;
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 10px;
 }
 
-.weekInfo {
-    font-size: 16px;
-    color: var(--dark-grey);
-}
-
-.scheduleType {
-    font-size: 14px;
-    color: var(--dark-grey);
-    font-style: italic;
-}
-
-.main {
-    flex: 1;
-    padding: 40px;
-    max-width: 1200px;
+.contentWrapper {
+    padding: 20px;
     width: 100%;
-    margin-left: 280px;
-}
-
-.scheduleContainer {
-    width: 100%;
-}
-
-.scheduleColumn {
-    background: #fafafa;
-    padding: 24px;
-    border-radius: 12px;
-
-    h2 {
-        margin: 0 0 24px;
-        font-size: 24px;
-        font-weight: 600;
-        color: var(--foreground);
-        padding-bottom: 12px;
-        border-bottom: 2px solid var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    transition: padding-right 0.3s ease;
+    height: 100%;
+    &.withLesson {
+        padding-right: 372px;
     }
+}
+
+.lessonOverlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 372px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+    z-index: 180;
+    overflow-y: auto;
 }

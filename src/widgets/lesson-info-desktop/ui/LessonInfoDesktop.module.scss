@@ -1,0 +1,173 @@
+.root {
+    user-select: none;
+    width: 100%;
+    background: var(--light-color);
+}
+
+.container {
+    padding: 0 24px 24px 24px;
+}
+
+.header {
+    margin-bottom: 24px;
+    padding: 16px;
+    color: var(--dark-grey);
+
+    font-family: Rubik;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+}
+
+.timeInfo {
+    display: flex;
+    align-items: center;
+}
+
+.time {
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.mainInfo {
+    margin-bottom: 24px;
+    padding: 16px;
+    background: var(--progress-light-grey);
+    border-radius: 8px;
+}
+
+.infoBlock {
+    margin-bottom: 16px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.value {
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.description {
+    margin-bottom: 24px;
+
+    p {
+        font-size: 16px;
+        line-height: 1.5;
+        color: var(--text-primary);
+    }
+}
+
+.sectionTitle {
+    padding-top: 20px;
+    padding-bottom: 8px;
+    color: rgba(0, 0, 0, 0.8);
+
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 115%;
+}
+
+.topicsList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.topicItem {
+    padding: 16px;
+    background: var(--progress-light-grey);
+    border-radius: 8px;
+}
+
+.topicTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.topicDescription {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.dateTimeControls {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.dateButton {
+    color: var(--grey-dotted-line);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 115%;
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+    width: 128px;
+    height: 32px;
+    padding: 10px 12px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid var(--background-page);
+    background: var(--progress-light-grey);
+}
+
+.timeSelect {
+    background: var(--progress-light-grey);
+    overflow: hidden;
+    color: var(--grey-dotted-line);
+    text-overflow: ellipsis;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 115%;
+    width: 120px;
+}
+.textareaField {
+    display: flex;
+    height: 200px;
+    padding: 10px 8px 10px 12px;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--progress-light-grey);
+    background: var(--progress-light-grey);
+    &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+    }
+}
+.inputField {
+    display: flex;
+    height: 72px;
+    padding: 10px 8px 10px 12px;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid var(--progress-light-grey);
+    background: var(--progress-light-grey);
+    width: 100%;
+    &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+    }
+}

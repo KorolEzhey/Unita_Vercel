@@ -1,0 +1,84 @@
+.uploadFiles {
+    width: 324px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 0;
+}
+
+.uploadSection {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.uploadButton {
+    align-items: center;
+    user-select: none;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+
+    border-radius: 8px;
+    border: 1px solid var(--alt-light-grey);
+    background: var(--background);
+    &:hover {
+        background: var(--Surface-neutral-200);
+    }
+}
+
+.fileInput {
+    display: none;
+}
+
+.buttonText {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.filesList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fileItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--Border-neutral-200);
+    background: var(--Surface-white-100);
+    color: var(--primary-color);
+
+    span {
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 8px;
+    }
+}
+
+.deleteButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 4px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 4px;
+
+    svg {
+        color: var(--alert-color);
+    }
+}

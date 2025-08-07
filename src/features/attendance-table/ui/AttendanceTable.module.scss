@@ -1,0 +1,134 @@
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  color: #737373;
+  padding: 1px 4px;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 400;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid #D4D4D4;
+  border-right: 1px solid #D4D4D4
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  white-space: nowrap;
+}
+
+.classHeader {
+    font-size: 32px;
+    font-weight: 500;
+    color: #404040;
+    padding: 60px 30px;
+    min-width: 320px;
+    min-height: 150px;
+}
+
+.month {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000CC;
+    text-align: left;
+    padding: 12px;
+}
+
+.date {
+    background-color: #F5F6F7;
+    color: #737373;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    padding-inline: 22px;
+
+}
+
+.dateColumn {
+    background-color: #F5F6F7;
+    color: #737373;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    width: 64px;
+
+}
+
+.subjectNumber {
+    color: #000000CC;
+    font-size: 14px;
+    font-weight: 400;
+    min-width: 52px;
+}
+
+.cellBackground {
+    background-color: #ededed;
+}
+
+.subjectHeader {
+    writing-mode: vertical-rl;
+    text-align: right;
+    padding-inline: 12px;
+    color: #171717;
+    font-weight: 400;
+}
+
+.rotatedText {
+    transform: rotate(180deg);
+    display: inline-block;
+}
+
+.subjectColumn,
+.indexColumn,
+.standardColumn {
+    width: 64px;
+    min-width: 64px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.nameColumn {
+    text-align: left;
+    padding-inline: 12px;
+    font-weight: 400;
+}
+
+.standard {
+    font-size: 16px;
+    font-weight: 500;
+    color: #171717;
+}
+
+.cell {
+    color: #171717;
+    text-align: center;
+    font-size: 16px;
+}
+
+.cellLeft {
+    text-align: left;
+    padding-inline: 12px;
+}
+
+.cellBold {
+    font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  text-align: center;
+  border: none;
+  background: transparent;
+  outline: none;
+  font: inherit;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

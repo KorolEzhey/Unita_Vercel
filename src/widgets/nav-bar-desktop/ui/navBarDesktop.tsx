@@ -6,9 +6,9 @@ import { NavBarButton } from "@/shared/ui/nav-bar";
 
 import GradeIcon from "./gradeIcon.svg";
 import LogoutIcon from "./logoutIcon.svg";
-import s from "./navBarDesktop.module.scss";
+import s from "./NavBarDesktop.module.scss";
 import ScheduleIcon from "./scheduleIcon.svg";
-import UserIcon from "./userIcon.svg";
+import UserIcon from "./whiteUserIcon.svg";
 
 type UserProfile = {
     surname: string;
@@ -84,7 +84,7 @@ export const NavBar = () => {
                     isDesktop
                 >
                     <div className="flex flex-col gap-1">
-                        <span className={s.text}>
+                        <span className="text-[14px]">
                             {formatUserName(profile)}
                         </span>
                         <span className="bg-[#E4E9FD] rounded-md w-max px-2 text-[12px]">

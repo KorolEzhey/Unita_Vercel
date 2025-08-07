@@ -1,48 +1,75 @@
 "use client";
 
-import "@/shared/styles/global.scss";
+import clsx from "clsx";
+import { useTranslations } from "next-intl";
+import React, { useState } from "react";
 
-import { addDays } from "date-fns";
-import { observer } from "mobx-react-lite";
-
+import { type Lesson } from "@/entities/lesson";
+import LessonDesktopPage from "@/pages/lesson-desktop";
+import { type DayInfo } from "@/shared/lib/constants";
+import CalendarIcon from "@/shared/icons/Calendar.svg";
+import { TeacherSelect } from "@/shared/ui/teacher-select/TeacherSelect";
 import { NavBar } from "@/widgets/nav-bar-desktop";
-import { ScheduleCarousel } from "@/widgets/schedule-carousel/ui/ScheduleCarousel";
+import { ScheduleCarousel } from "@/widgets/schedule-carousel";
 
-import styles from "./ScheduleDesktopPage.module.scss";
+import s from "./ScheduleDesktopPage.module.scss";
 
-export const ScheduleDesktopPage = observer(() => {
-    const today = new Date();
-    const days = [
-        {
-            title: "Понедельник",
-            dayNumber: 1 as const,
-            date: addDays(today, 0),
-            type: "weekday" as const,
-        },
-        {
-            title: "Вторник",
-            dayNumber: 2 as const,
-            date: addDays(today, 1),
-            type: "weekday" as const,
-        },
-        {
-            title: "Среда",
-            dayNumber: 3 as const,
-            date: addDays(today, 2),
-            type: "weekday" as const,
-        },
-    ];
+const ScheduleDesktopPage = () => {
+    const t = useTranslations();
+    const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
+    const [currentDay, setCurrentDay] = useState<DayInfo | null>(null);
+
+    const handleLessonClick = (lesson: Lesson, day: DayInfo) => {
+        setSelectedLesson(lesson);
+        setCurrentDay(day);
+    };
+
+    const handleClose = () => {
+        setSelectedLesson(null);
+        setCurrentDay(null);
+    };
 
     return (
-        <div className={styles.container}>
-            <div className={styles.sidebar}>
+        <div className={s.root}>
+            <div className={s.sidebar}>
                 <NavBar />
             </div>
-            <main className={styles.main}>
-                <ScheduleCarousel days={days} />
-            </main>
+            <div className={s.content}>
+                <div className={s.pageHeader}>
+                    <h1 className={s.title}>{t("navigation.schedule")}</h1>
+                    <div className={s.calendarButton} onClick={() => {}}>
+                        <span>6.09.2025</span>
+                        <CalendarIcon
+                            width={16}
+                            height={16}
+                            viewBox="0 0 32 32"
+                        />
+                    </div>
+                    <TeacherSelect
+                        className={s.teacherSelect}
+                        onChange={(value) => {}}
+                        disabled
+                    />
+                </div>
+                <div
+                    className={clsx(s.contentWrapper, {
+                        [s.withLesson]: selectedLesson !== null,
+                    })}
+                >
+                    <ScheduleCarousel onLessonSelect={handleLessonClick} />
+                </div>
+                {selectedLesson && (
+                    <div className={s.lessonOverlay}>
+                        <LessonDesktopPage
+                            lesson={selectedLesson}
+                            day={currentDay!}
+                            onClose={handleClose}
+                        />
+                    </div>
+                )}
+            </div>
         </div>
     );
-});
+};
 
 export default ScheduleDesktopPage;

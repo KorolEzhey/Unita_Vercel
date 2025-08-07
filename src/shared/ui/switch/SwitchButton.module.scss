@@ -1,0 +1,14 @@
+.button {
+  height: 32px;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: transparent;
+  color: var(--foreground);
+  border: none;
+  cursor: pointer;
+}
+
+.active {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
