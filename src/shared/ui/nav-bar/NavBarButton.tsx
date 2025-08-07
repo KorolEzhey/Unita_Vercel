@@ -2,7 +2,7 @@ import clsx from "clsx";
 import type { FC } from "react";
 
 import { Button } from "../button/Button";
-import s from "./navBarButton.module.scss";
+import s from "./NavBarButton.module.scss";
 
 type NavBarButtonProps = {
     onClick: () => void;
