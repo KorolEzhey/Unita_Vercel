@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/shared/ui/button";
-import CameraIcon from "@/shared/ui/icons/Camera.svg";
+import CameraIcon from "@/shared/icons/Camera.svg";
 
 import s from "./ChangePhotoButton.module.scss";
 
