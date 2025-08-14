@@ -1,9 +1,8 @@
 .uploadFiles {
-    width: 324px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    padding: 24px 0;
+    gap: 12px;
 }
 
 .uploadSection {
@@ -17,7 +16,6 @@
     user-select: none;
     width: 100%;
     display: flex;
-    padding: 10px;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -29,6 +27,11 @@
     &:hover {
         background: var(--Surface-neutral-200);
     }
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 115%;
 }
 
 .fileInput {
@@ -37,7 +40,9 @@
 
 .buttonText {
     font-size: 14px;
+    font-style: normal;
     font-weight: 400;
+    line-height: 120%;
 }
 
 .filesList {
@@ -51,14 +56,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
     border-radius: 8px;
     border: 1px solid var(--Border-neutral-200);
     background: var(--Surface-white-100);
     color: var(--primary-color);
-
+    width: 100%;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
     span {
-        flex: 1;
+        display: block;
+        max-width: calc(100% - 40px);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

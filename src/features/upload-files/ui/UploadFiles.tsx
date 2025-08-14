@@ -10,8 +10,6 @@ import s from "./UploadFiles.module.scss";
 type FileItem = {
     id: string;
     name: string;
-    size: number;
-    type: string;
     file: File;
 };
 
@@ -30,8 +28,6 @@ export const UploadFiles: React.FC<UploadFilesProps> = ({ className }) => {
         const newFiles: FileItem[] = Array.from(uploadedFiles).map((file) => ({
             id: uuidv4(),
             name: file.name,
-            size: file.size,
-            type: file.type,
             file: file,
         }));
 
@@ -40,14 +36,6 @@ export const UploadFiles: React.FC<UploadFilesProps> = ({ className }) => {
 
     const handleDelete = (id: string) => {
         setFiles((prev) => prev.filter((file) => file.id !== id));
-    };
-
-    const formatFileSize = (bytes: number): string => {
-        if (bytes < 1024) return `${bytes} B`;
-        if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(2)} KB`;
-        if (bytes < 1024 * 1024 * 1024)
-            return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
-        return `${(bytes / (1024 * 1024 * 1024)).toFixed(2)} GB`;
     };
 
     return (
@@ -68,14 +56,9 @@ export const UploadFiles: React.FC<UploadFilesProps> = ({ className }) => {
 
             {files.length > 0 && (
                 <div className={s.filesList}>
-                    {files.map(({ id, name, size }) => (
+                    {files.map(({ id, name }) => (
                         <div key={id} className={s.fileItem}>
-                            <div className={s.fileInfo}>
-                                <span className={s.fileName}>{name}</span>
-                                <span className={s.fileSize}>
-                                    {formatFileSize(size)}
-                                </span>
-                            </div>
+                            <span className={s.fileName}>{name}</span>
                             <button
                                 className={s.deleteButton}
                                 onClick={() => handleDelete(id)}

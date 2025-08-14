@@ -1,5 +1,4 @@
 .root {
-    min-height: 100vh;
     background: var(--background);
 }
 
@@ -43,14 +42,22 @@
     display: flex;
     width: 128px;
     height: 36px;
-    padding: 10px 12px;
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
     border: 1px solid var(--alt-light-grey);
     background: var(--background);
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.03);
-    margin-right: 24px;
+    padding: 10px 12px;
+    cursor: pointer;
+
+    span {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 115%;
+        color: var(--foreground);
+    }
 }
 .title {
     color: var(--foreground);

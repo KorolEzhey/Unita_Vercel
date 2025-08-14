@@ -98,18 +98,27 @@ export const ScheduleList = () => {
     return (
         <div className={s.root}>
             <ul className={s.list}>
-                {mockLessons.map((lesson) => (
+                {mockLessons.map((lesson, index) => (
                     <React.Fragment key={lesson.id}>
-                        <div className={s.time}>
-                            {lesson.startTime}-{lesson.endTime}
+                        <div className={s.lessonContainer}>
+                            <div className={s.lessonNumber}>{index + 1}</div>
+                            <div className={s.lessonContent}>
+                                <div className={s.time}>
+                                    {lesson.startTime}-{lesson.endTime}
+                                </div>
+                                <li
+                                    className={s.item}
+                                    onClick={() => handleLessonClick(lesson)}
+                                >
+                                    <div className={s.subject}>
+                                        {lesson.title}
+                                    </div>
+                                    <div className={s.teacher}>
+                                        {lesson.teacher}
+                                    </div>
+                                </li>
+                            </div>
                         </div>
-                        <li
-                            className={s.item}
-                            onClick={() => handleLessonClick(lesson)}
-                        >
-                            <div className={s.subject}>{lesson.title}</div>
-                            <div className={s.teacher}>{lesson.teacher}</div>
-                        </li>
                     </React.Fragment>
                 ))}
             </ul>

@@ -1,14 +1,12 @@
 .root {
     z-index: 170;
-    position: relative;
+
     display: flex;
     max-width: 372px;
     height: 100%;
-    padding: 0;
+    padding: 16px;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    flex-shrink: 0;
     border-left: 1px solid rgba(0, 0, 0, 0.2);
     background: var(--background);
 }
@@ -18,7 +16,6 @@
     align-items: center;
     gap: 16px;
     width: 100%;
-    padding: 24px;
     position: sticky;
     top: 0;
     background: var(--background);
@@ -51,7 +48,7 @@
 .uploadSection {
     width: 100%;
     display: flex;
-    padding: 10px;
+    padding: 10px 0;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -59,12 +56,18 @@
 }
 
 .actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 24px;
     width: 100%;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 0 40px;
     margin-top: auto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 115%;
 }
 .content {
     padding: 24px;

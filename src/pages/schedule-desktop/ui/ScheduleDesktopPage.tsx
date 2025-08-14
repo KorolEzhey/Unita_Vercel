@@ -60,6 +60,7 @@ const ScheduleDesktopPage = () => {
                 >
                     <ScheduleCarousel
                         onLessonSelect={handleLessonClick}
+                        selectedLesson={selectedLesson}
                         selectedDate={selectedDate}
                         onDateChange={setSelectedDate}
                     />

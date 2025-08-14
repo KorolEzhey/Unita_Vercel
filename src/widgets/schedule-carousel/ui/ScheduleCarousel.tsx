@@ -19,6 +19,7 @@ import styles from "./ScheduleCarousel.module.scss";
 type Props = {
     days?: DayInfo[];
     onLessonSelect?: (lesson: Lesson, day: DayInfo) => void;
+    selectedLesson: Lesson | null;
     selectedDate: Date;
     onDateChange: (date: Date) => void;
     onNextWeek?: () => void;
@@ -42,18 +43,14 @@ const generateDays = (
 };
 
 export const ScheduleCarousel: React.FC<Props> = observer(
-    ({ days: propDays, onLessonSelect, selectedDate }) => {
+    ({ days: propDays, onLessonSelect, selectedDate, selectedLesson }) => {
         const t = useTranslations();
-        const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(
-            null
-        );
 
         // Начало недели для выбранной даты
         const weekStart = startOfWeek(selectedDate, { weekStartsOn: 1 });
         const days = propDays ?? generateDays(weekStart, t);
 
         const handleLessonSelect = (lesson: Lesson, day: DayInfo) => {
-            setSelectedLesson(lesson);
             if (onLessonSelect) {
                 onLessonSelect(lesson, day);
             }
