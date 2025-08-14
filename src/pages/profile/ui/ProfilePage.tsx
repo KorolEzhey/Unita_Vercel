@@ -16,7 +16,6 @@ export default function ProfilePage() {
         id: "1",
         name: "Иван Иванов",
         className: "ИСП-201",
-        avatar: "/unita_logo.jpg",
     };
 
     const profileFile = {

@@ -13,7 +13,11 @@
     "lesson": {
         "topic": "Lesson Topic",
         "description": "Description",
-        "materials": "Materials"
+        "materials": "Materials",
+        "dateTime": "Date and Time",
+        "subject": "Subject",
+        "enterTopic": "Enter the lesson topic",
+        "enterDescription": "Enter the lesson description"
     },
     "calendar": {
         "days": {
@@ -53,7 +57,10 @@
         "logout": "Log out",
         "installFile": "Install file",
         "changePhoto": "Change photo",
-        "profile": "Profile"
+        "profile": "Profile",
+        "save": "Save",
+        "delete": "Delete",
+        "download": "Download file"
     },
     "quarters": {
         "q1": "1 Dive",

@@ -1,9 +1,9 @@
 "use client";
 import "@/shared/styles/global.scss";
 
+import { StudentCalendar } from "@/features/student-calendar";
 import { NavBar } from "@/widgets/nav-bar";
 import { ScheduleList } from "@/widgets/schedule-list";
-import { StudentCalendar } from "@/widgets/student-calendar";
 
 export default function Home() {
     return (

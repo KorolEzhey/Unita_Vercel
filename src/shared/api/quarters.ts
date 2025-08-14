@@ -36,7 +36,7 @@ const quarterMockData: Record<string, DiveTableData> = {
 
 export class QuartersApi {
     async getQuarterData(quarter: string): Promise<DiveTableData> {
-        await new Promise((resolve) => setTimeout(resolve, 500)); // Имитация задержки сети
+        await new Promise((resolve) => setTimeout(resolve, 500));
         return quarterMockData[quarter] || [];
     }
 

@@ -37,3 +37,24 @@ export type DiveTableRow = {
 };
 
 export type DiveTableData = DiveTableRow[];
+
+export type WeekDay = 1 | 2 | 3 | 4 | 5;
+
+export const WORK_DAYS_COUNT = 5;
+
+export const getWeekDays = (t: (key: string) => string) =>
+    ({
+        1: t("calendar.days.short.0"),
+        2: t("calendar.days.short.1"),
+        3: t("calendar.days.short.2"),
+        4: t("calendar.days.short.3"),
+        5: t("calendar.days.short.4"),
+    }) as const;
+
+export const LESSON_NUMBER_OFFSET = 1;
+
+export type DayInfo = {
+    title: string;
+    dayNumber: WeekDay;
+    date: Date;
+};

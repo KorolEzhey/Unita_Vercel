@@ -18,6 +18,8 @@ export type Lesson = {
     startTime: string;
     endTime: string;
     description?: string;
-    classroom?: string;
+    classroom: string;
+    class: string;
+    weekPattern: number;
     topics: LessonTopic[];
 };

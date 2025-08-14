@@ -1,0 +1,46 @@
+.teacherSelect {
+    display: flex;
+    justify-content: space-between;
+    align-self: stretch;
+    width: 100%;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid var(--background-page);
+    background: var(--progress-light-grey);
+    overflow: hidden;
+}
+
+.select {
+    user-select: none;
+    width: 100%;
+    padding: 8px 8px 8px 12px;
+
+    cursor: pointer;
+    appearance: none;
+    transition: all 0.2s ease;
+
+    &.disabled {
+        color: var(--grey-dotted-line);
+        cursor: default;
+        opacity: 0.7;
+        pointer-events: none;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.arrow {
+    position: relative;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    &.disabled {
+        color: var(--grey-dotted-line);
+        cursor: default;
+        opacity: 0.7;
+        pointer-events: none;
+    }
+}
