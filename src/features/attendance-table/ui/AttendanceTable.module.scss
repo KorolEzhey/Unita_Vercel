@@ -1,24 +1,24 @@
 .table {
-  border-collapse: collapse;
-  width: 100%;
-  color: #737373;
-  padding: 1px 4px;
-  font-size: 14px;
-  text-align: center;
-  vertical-align: middle;
-  font-weight: 400;
+    border-collapse: collapse;
+    width: 100%;
+    color: #737373;
+    padding: 1px 4px;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 400;
 }
 
 .table th,
 .table td {
-  border-bottom: 1px solid #D4D4D4;
-  border-right: 1px solid #D4D4D4
+    border-bottom: 1px solid #d4d4d4;
+    border-right: 1px solid #d4d4d4;
 }
 
 .vertical-text {
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  white-space: nowrap;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    white-space: nowrap;
 }
 
 .classHeader {
@@ -33,33 +33,31 @@
 .month {
     font-size: 16px;
     font-weight: 400;
-    color: #000000CC;
+    color: #000000cc;
     text-align: left;
     padding: 12px;
 }
 
 .date {
-    background-color: #F5F6F7;
+    background-color: #f5f6f7;
     color: #737373;
     font-size: 14px;
     font-weight: 400;
     text-align: left;
     padding-inline: 22px;
-
 }
 
 .dateColumn {
-    background-color: #F5F6F7;
+    background-color: #f5f6f7;
     color: #737373;
     font-size: 14px;
     font-weight: 400;
     text-align: center;
     width: 64px;
-
 }
 
 .subjectNumber {
-    color: #000000CC;
+    color: #000000cc;
     font-size: 14px;
     font-weight: 400;
     min-width: 52px;
@@ -119,16 +117,16 @@
 }
 
 .input {
-  width: 100%;
-  text-align: center;
-  border: none;
-  background: transparent;
-  outline: none;
-  font: inherit;
+    width: 100%;
+    text-align: center;
+    border: none;
+    background: transparent;
+    outline: none;
+    font: inherit;
 
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 }
