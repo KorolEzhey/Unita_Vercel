@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { NavBarButton } from "@/shared/ui/nav-bar";
 
 import GradeIcon from "./gradeIcon.svg";
-import s from "./NavBar.module.scss";
+import s from "./navBar.module.scss";
 import ProfileIcon from "./profileIcon.svg";
 import ScheduleIcon from "./scheduleIcon.svg";
 

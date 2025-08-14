@@ -6,7 +6,7 @@ import { NavBarButton } from "@/shared/ui/nav-bar";
 
 import GradeIcon from "./gradeIcon.svg";
 import LogoutIcon from "./logoutIcon.svg";
-import s from "./NavBarDesktop.module.scss";
+import s from "./navBarDesktop.module.scss";
 import ScheduleIcon from "./scheduleIcon.svg";
 import UserIcon from "./whiteUserIcon.svg";
 
