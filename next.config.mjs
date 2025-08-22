@@ -8,7 +8,8 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: "https",
-                hostname: process.env.NEXT_PUBLIC_API_HOSTNAME,
+                hostname:
+                    process.env.NEXT_PUBLIC_API_HOSTNAME || "api.example.com",
                 pathname: "/users/*/avatar",
             },
         ],
