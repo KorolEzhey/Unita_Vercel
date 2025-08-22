@@ -2,24 +2,33 @@ import clsx from "clsx";
 
 import s from "./SwitchButton.module.scss";
 
-type SwitchButtonProps = {
+type Props = {
     isActive: boolean;
-    onClick: () => void;
-    className?: string;
+    withBackground?: boolean;
     children: React.ReactNode;
+    onClick: () => void;
+    width?: string | number;
+    padding?: string;
 };
 
 export const SwitchButton = ({
     isActive,
-    onClick,
-    className,
+    withBackground = false,
     children,
-}: SwitchButtonProps) => {
+    onClick,
+    width,
+    padding,
+}: Props) => {
     return (
         <button
             onClick={onClick}
-            className={clsx(s.button, className, {
+            style={{
+                ...(width ? { width } : {}),
+                ...(padding ? { padding } : {}),
+            }}
+            className={clsx(s.button, {
                 [s.active]: isActive,
+                [s.withBackground]: withBackground,
             })}
         >
             {children}

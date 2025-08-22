@@ -1,0 +1,84 @@
+.className {
+    width: 68px;
+}
+
+.fileName {
+    width: 245px;
+}
+
+.file {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 8px;
+    align-items: center;
+}
+
+.clearFile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.action {
+    width: 50px;
+}
+
+.actionCell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line {
+    height: 30px;
+}
+
+.input {
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: transparent;
+    outline: none;
+    font: inherit;
+
+    &::file-selector-button {
+        display: none;
+    }
+
+    &::-webkit-file-upload-button {
+        display: none;
+    }
+}
+
+.fileInputWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.customFileButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+    z-index: 1;
+}
+
+.firstColPadding {
+    padding-left: 8px;
+}
+
+.rightColCenter {
+    padding-left: 18px;
+}
+

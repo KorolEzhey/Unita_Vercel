@@ -1,29 +1,26 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
+import { useUser } from "@/entities/user";
 import EyeOpen from "@/shared/icons/Eye.svg";
 import EyeClosed from "@/shared/icons/Eye2.svg";
+import { SpinnerWrapper } from "@/shared/ui";
 import { Button } from "@/shared/ui/button";
-import { SpinnerWrapper } from "@/shared/ui/spinner/Spinner";
-import { LangSwitcher } from "./LangSwitcher";
 
+import { useAuth } from "../model/useAuth";
 import styles from "./LoginForm.module.scss";
-
-type LoginFormProps = {
-    onSuccess: () => void;
-};
 
 type FormValues = {
     login: string;
     password: string;
 };
 
-export function LoginForm({ onSuccess }: LoginFormProps) {
+export function LoginForm() {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
     const t = useTranslations("auth");
 
     const {
@@ -33,25 +30,41 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
         setError: setFormError,
     } = useForm<FormValues>();
 
+    const { login, isLoading } = useAuth();
+
+    const router = useRouter();
+    const { refetch: refetchUser } = useUser();
+
     const onSubmit = async (data: FormValues) => {
-        try {
-            setIsLoading(true);
-            // TODO: Реализовать API запрос для аутентификации
-            await new Promise((resolve) => setTimeout(resolve, 1000)); // Имитация запроса
-            onSuccess();
-        } catch {
-            setFormError("login", {
-                type: "manual",
-                message: t("errors.loginError"),
-            });
-        } finally {
-            setIsLoading(false);
-        }
+        login(
+            {
+                login: data.login,
+                password: data.password,
+            },
+            {
+                onSuccess: async () => {
+                    const { data: user } = await refetchUser();
+                    if (user?.role === "STUDENT") {
+                        router.push("/schedule");
+                    } else if (
+                        user?.role === "TEACHER" ||
+                        user?.role === "ADMIN"
+                    ) {
+                        router.push("/schedule-desktop");
+                    }
+                },
+                onError: () => {
+                    setFormError("login", {
+                        type: "manual",
+                        message: t("errors.loginError"),
+                    });
+                },
+            }
+        );
     };
 
     return (
         <div className={styles.formWrapper}>
-            <LangSwitcher />
             <div>
                 <h2 className={styles.title}>{t("title")}</h2>
             </div>

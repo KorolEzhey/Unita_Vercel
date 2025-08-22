@@ -1,0 +1,65 @@
+.button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    border-radius: 8px;
+    min-width: 100%;
+    height: 56px;
+    background-color: #f5f6f7;
+}
+
+.button:hover {
+    background: #e6f0ff80;
+}
+
+.active {
+    background: #e6f0ff80;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.textBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+}
+
+.name {
+    font-size: 14px;
+    color: #404040;
+}
+
+.job {
+    font-size: 12px;
+    padding: 1px 4px;
+    border-radius: 4px;
+    background: #f5f6f7;
+    color: #404040;
+
+    &.teacher {
+        background: #e4e9fd;
+        color: #465882;
+    }
+
+    &.admin {
+        background: #fef0f0;
+        color: #e99a97;
+    }
+}

@@ -51,7 +51,9 @@
         "profile": "Profile",
         "grade-book": "GradeBooks",
         "logout": "Log out",
-        "attendance": "Attendance"
+        "attendance": "Attendance",
+        "database": "Databases",
+        "files": "Files"
     },
     "buttons": {
         "logout": "Log out",
@@ -60,7 +62,9 @@
         "profile": "Profile",
         "save": "Save",
         "delete": "Delete",
-        "download": "Download file"
+        "download": "Download file",
+        "add-module": "Add module",
+        "add-lesson": "Add lesson"
     },
     "quarters": {
         "q1": "1 Dive",
@@ -81,13 +85,41 @@
         "class": "Class",
         "date": "Date",
         "lesson": "Lesson",
-        "standard": "Standard"
+        "standard": "Standard",
+        "file": "File",
+        "period": "Period",
+        "grade-table": "Grade Table",
+        "class-label": "Class"
     },
     "profile": {
-        "study-load": "Study load"
+        "study-load": "Study load",
+        "loading": "Loading profile..."
     },
     "grades-types": {
         "all": "All",
         "final": "Final"
+    },
+    "tabs": {
+        "module": "Module",
+        "users": "Users",
+        "other": "Other",
+        "class": "Class",
+        "subject": "Subject",
+        "plan": "Plan",
+        "load": "Load"
+    },
+    "status": {
+        "uploading": "Uploading...",
+        "other": "Other",
+        "class": "Class",
+        "subject": "Subject",
+        "plan": "Plan",
+        "load": "Load",
+        "noLessonsToday": "No lessons today"
+    },
+    "roles": {
+        "admin": "Admin",
+        "teacher": "Teacher",
+        "student": "Student"
     }
 }

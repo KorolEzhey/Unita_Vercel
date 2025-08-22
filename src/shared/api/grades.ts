@@ -1,6 +1,6 @@
 import type { Grade } from "../lib/constants";
 
-// Моковые данные для примера
+// TODO убрать моковые данные после появления реальных
 const mockGrades: Grade[] = [
     {
         id: "1",

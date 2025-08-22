@@ -1,1 +1,1 @@
-export { SwitchButton } from "./SwitchButton";
+export { SwitchTabs } from "./SwitchTabs";

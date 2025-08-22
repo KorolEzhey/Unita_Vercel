@@ -1,0 +1,182 @@
+.container {
+    padding: 0;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #737373;
+    padding: 0;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 400;
+}
+
+.table th,
+.table td {
+    border-bottom: 1px solid var(--grey-table-color);
+    border-right: 1px solid var(--grey-table-color);
+    box-sizing: border-box;
+}
+
+.classHeader {
+    font-size: 32px;
+    font-weight: 500;
+    color: #404040;
+    padding: 60px 30px;
+    min-width: 320px;
+    min-height: 150px;
+    background-color: #fff;
+}
+
+.weekHeader,
+.weekNumber {
+    background-color: var(--progress-light-grey);
+    font-weight: 400;
+    min-width: 55px;
+    max-width: 55px;
+    width: 55px;
+    height: 24px;
+    padding: 8px;
+    text-align: center;
+}
+
+.subjectWrapper {
+    padding-inline: 12px;
+    vertical-align: bottom;
+    background-color: #fff;
+    height: 150px;
+}
+
+.subjectName {
+    color: #171717;
+    font-weight: 400;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+}
+
+.indexColumn {
+    width: 64px;
+    min-width: 64px;
+    text-align: center;
+    font-weight: 400;
+    background-color: #fff;
+}
+
+.nameColumn {
+    text-align: left;
+    padding-inline: 12px;
+    font-weight: 400;
+    width: 256px;
+    background-color: #fff;
+}
+
+.averageColumn {
+    width: 64px;
+    min-width: 64px;
+    text-align: center;
+    font-weight: 500;
+    background-color: #fff;
+}
+
+.cell {
+    color: var(--foreground);
+    text-align: center;
+    font-size: 16px;
+    background-color: var(--background);
+    min-width: 55px;
+    max-width: 55px;
+    width: 55px;
+    vertical-align: middle;
+}
+
+.gradeCell {
+    color: var(--foreground);
+    text-align: center;
+    font-size: 16px;
+    background-color: var(--background);
+    min-height: 20px;
+    min-width: 55px;
+    max-width: 55px;
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--grey-table-color);
+}
+
+.input {
+    width: 100%;
+    text-align: center;
+    border: none;
+    background: transparent;
+    outline: none;
+    font: inherit;
+    color: #171717;
+    font-size: 16px;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &:focus {
+        background-color: #f8f9fa;
+        border-radius: 4px;
+    }
+}
+
+.gradeRed {
+    background-color: var(--grade-red);
+    color: var(--foreground);
+}
+
+.gradeOrange {
+    background-color: var(--grade-orange);
+    color: var(--foreground);
+}
+
+.gradeYellow {
+    background-color: var(--grade-yellow);
+    color: var(--foreground);
+}
+
+.gradeGreen {
+    background-color: var(--grade-green);
+    color: var(--foreground);
+}
+
+.sticky1 {
+    position: sticky;
+    left: 0;
+    background: var(--background);
+    z-index: 10;
+    border-right: 1px solid var(--grey-table-color);
+}
+
+.sticky2 {
+    position: sticky;
+    left: 64px;
+    background: var(--background);
+    z-index: 10;
+    border-right: 1px solid var(--grey-table-color);
+}
+
+.sticky3 {
+    position: sticky;
+    left: 320px;
+    background: var(--background);
+    z-index: 10;
+    border-right: 1px solid var(--grey-table-color);
+}
+
+.stickyWeek {
+    position: sticky;
+    background: var(--progress-light-grey);
+    left: 320px;
+    z-index: 10;
+    border-right: 1px solid var(--grey-table-color);
+}

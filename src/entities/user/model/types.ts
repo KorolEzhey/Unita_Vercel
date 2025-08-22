@@ -1,8 +1,11 @@
+export type Role = "TEACHER" | "ADMIN" | "STUDENT";
+
 export type User = {
-    id: string;
-    surname: string;
+    id: number;
     name: string;
-    patronymic: string;
-    jobTitle: string;
+    login: string;
+    role: Role;
     avatar?: string;
+    teacherId?: number;
+    studentId?: number;
 };

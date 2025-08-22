@@ -1,0 +1,105 @@
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    color: #737373;
+    padding: 1px 4px;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 400;
+}
+
+.table th,
+.table td {
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    white-space: nowrap;
+}
+
+.indexColumn,
+.averageColumn {
+    width: 64px;
+    min-width: 64px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.nameColumn {
+    text-align: left;
+    padding-inline: 12px;
+    font-weight: 400;
+    width: 256px;
+}
+
+.cell {
+    color: #171717;
+    padding-inline: 12px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.cellLeft {
+    text-align: left;
+}
+
+.cellBold {
+    font-weight: 500;
+}
+
+.gradeRed {
+    background-color: var(--grade-red);
+}
+
+.gradeOrange {
+    background-color: var(--grade-orange);
+}
+
+.gradeYellow {
+    background-color: var(--grade-yellow);
+}
+
+.gradeGreen {
+    background-color: var(--grade-green);
+}
+
+.input {
+    width: 100%;
+    text-align: center;
+    border: none;
+    background: transparent;
+    outline: none;
+    font: inherit;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+.sticky1 {
+    position: sticky;
+    left: 0;
+    background: #fff;
+    z-index: 2;
+}
+
+.sticky2 {
+    position: sticky;
+    left: 64px;
+    background: #fff;
+    z-index: 2;
+}
+
+.sticky3 {
+    position: sticky;
+    left: 320px;
+    background: #fff;
+    z-index: 2;
+}

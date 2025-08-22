@@ -28,18 +28,17 @@ export default [
             parser: tsParser,
             parserOptions: {
                 ecmaVersion: "latest",
-                ecmaFeatures: {
-                    jsx: true,
-                },
                 sourceType: "module",
                 ecmaFeatures: { jsx: true },
                 project: "./tsconfig.json",
             },
             globals: {
                 ...globals.browser,
+                ...globals.node,
                 React: "readonly",
                 JSX: "readonly",
                 NodeJS: "readonly",
+                process: "readonly",
             },
         },
         plugins: {
@@ -116,13 +115,7 @@ export default [
             "sort-imports": "off",
 
             // Правило Prettier должно быть последним!
-            "prettier/prettier": [
-                "error",
-                {
-                    endOfLine: "auto",
-                },
-                { usePrettierrc: true },
-            ],
+            "prettier/prettier": ["error", {}, { usePrettierrc: true }],
         },
     },
 ];

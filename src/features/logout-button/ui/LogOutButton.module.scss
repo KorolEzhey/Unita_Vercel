@@ -39,3 +39,13 @@
         height: 100%;
     }
 }
+
+.navbarIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    path {
+        fill: none;
+        stroke-width: 2px;
+    }
+}

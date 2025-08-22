@@ -1,6 +1,14 @@
-export type Student = {
-    id: string;
-    name: string;
+export type StudentResponse = {
+    studentId: number;
+    login: string;
+    fullName: string;
+    classId: number;
     className: string;
-    avatar?: string;
+};
+
+export type NewStudent = {
+    login: string;
+    password: string;
+    fullName: string;
+    classId: number;
 };

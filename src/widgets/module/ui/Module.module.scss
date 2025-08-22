@@ -1,0 +1,157 @@
+.root {
+    width: 460px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    font-family: Rubik;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 115%;
+    user-select: none;
+}
+
+.moduleHeader {
+    padding: 16px 16px 8px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    min-height: 40px;
+}
+
+.headerContent {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+}
+
+.moduleName {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--foreground);
+    cursor: pointer;
+    transition: color 0.2s;
+    flex: 1;
+    text-align: left;
+    margin-right: 16px;
+    white-space: nowrap;
+
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+.moduleNameInput {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--foreground);
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    padding: 4px 8px;
+    outline: none;
+    font-family: inherit;
+    text-align: left;
+    margin-right: 16px;
+    white-space: nowrap;
+}
+
+th.indexHeader {
+    font-size: 12px;
+    color: var(--grey);
+    text-align: center;
+    height: 37px;
+    font-weight: 500;
+}
+
+th.actionHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    height: 37px;
+}
+
+th.periodHeader {
+    border-right: none;
+    height: 37px;
+    font-weight: 500;
+}
+
+th.moduleHeader {
+    width: 165px;
+    font-weight: 500;
+    height: 37px;
+}
+
+.periodCell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 8px;
+    gap: 4px;
+}
+
+.date {
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+}
+
+.indexCell {
+    text-align: center;
+    color: var(--grey);
+}
+
+.actionCell {
+    button {
+        width: 100%;
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        svg {
+            width: 14px;
+            height: 14px;
+            color: var(--primary-color);
+            fill: var(--primary-color);
+        }
+    }
+}
+
+.emptyActionCell {
+    padding-left: 11.645px;
+    height: 100%;
+}
+
+.line {
+    height: 30px;
+}
+
+.input {
+    width: 100%;
+    text-align: left;
+    padding-inline: 8px;
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+.periodInputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dateInput {
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 0.25rem;
+    width: 100%;
+    min-width: 80px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

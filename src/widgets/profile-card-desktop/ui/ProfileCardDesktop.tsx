@@ -1,70 +1,80 @@
-import Image from "next/image";
+import clsx from "clsx";
 import { useTranslations } from "next-intl";
-import type { FC } from "react";
+import { type FC, useState } from "react";
 
-import type { User } from "@/entities/user/model/types";
+import { type User, useUser } from "@/entities/user";
+import { ChangePhotoButton } from "@/features/change-photo";
 import { FileInstallButton } from "@/features/installation-files";
-import UserIcon from "@/shared/icons/UserIcon.svg";
+import { UserAvatar } from "@/features/user-avatar";
 
 import s from "./ProfileCardDesktop.module.scss";
 
 type ProfileCardProps = {
-    user: User;
     file: { id: string; fileName: string; fileUrl: string };
 };
 
-const UserInfo = ({
-    surname,
-    name,
-    patronymic,
-    jobTitle,
-}: Pick<User, "surname" | "name" | "patronymic" | "jobTitle">) => {
-    const fullName = [surname, name].filter(Boolean).join(" ");
+const UserInfo = ({ name, role }: Pick<User, "name" | "role">) => {
+    const t = useTranslations();
+    const roleText = t(`roles.${role.toLowerCase()}`);
+
     return (
         <div className={s.info}>
-            <p className={s.name}>
-                {fullName}
-                <br />
-                {patronymic}
+            <p className={s.name}>{name}</p>
+            <p
+                className={clsx(s.role, {
+                    [s.teacher]: role === "TEACHER",
+                    [s.admin]: role === "ADMIN",
+                })}
+            >
+                {roleText}
             </p>
-            <p className={s.role}>{jobTitle}</p>
         </div>
     );
 };
 
 export const ProfileCardDesktop: FC<ProfileCardProps> = ({
-    user: { name, surname, patronymic, jobTitle, avatar },
     file: { fileName, fileUrl },
 }) => {
-    const fullName = [surname, name, patronymic].filter(Boolean).join(" ");
+    const { data: user, isLoading, isError } = useUser();
+    const [avatarKey, setAvatarKey] = useState(0);
     const t = useTranslations("profile");
+
+    const handleAvatarUpdate = () => {
+        setAvatarKey((prev) => prev + 1);
+    };
+
+    if (isError) {
+        return null;
+    }
+
+    if (isLoading) {
+        return <div className={s.root}>{t("loading")}</div>;
+    }
+
+    if (!user) {
+        return null;
+    }
+
+    const { name, role } = user;
 
     return (
         <div className={s.root}>
             <div className={s.content}>
                 <div className={s.avatar}>
-                    {avatar ? (
-                        <Image
-                            src={avatar}
-                            alt={fullName}
-                            width={104}
-                            height={104}
-                            className={s.image}
-                        />
-                    ) : (
-                        <UserIcon
-                            width={104}
-                            height={104}
-                            viewBox="0 0 104 104"
-                        />
-                    )}
+                    <UserAvatar
+                        userId={user.id}
+                        name={name}
+                        size={104}
+                        className={s.image}
+                        avatarKey={avatarKey}
+                    />
+                    <ChangePhotoButton
+                        variant="desktop"
+                        userId={user.id}
+                        onSuccess={handleAvatarUpdate}
+                    />
                 </div>
-                <UserInfo
-                    surname={surname}
-                    name={name}
-                    patronymic={patronymic}
-                    jobTitle={jobTitle}
-                />
+                <UserInfo name={name} role={role} />
             </div>
             <p className={s.title}>{t("study-load")}</p>
             <FileInstallButton

@@ -1,32 +1,42 @@
 "use client";
 import "@/shared/styles/global.scss";
 
+import { observer } from "mobx-react-lite";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { match } from "ts-pattern";
 
-import { AttendanceTable } from "@/features/attendance-table";
-import type { Attendance } from "@/features/attendance-table/model/types";
-import { GradeFinalTable } from "@/features/grade-final-table";
-import type { FinalGrade } from "@/features/grade-final-table/model/types";
-import { GradeTable } from "@/features/grade-table";
-import type { Grade } from "@/features/grade-table/model/types";
-import { SwitchGradeAttendance } from "@/features/switch-grade-attendance";
-import { SwitchGradesTypes } from "@/features/switch-grades-types";
+import { classStore } from "@/entities/class";
 import { PageTitle } from "@/shared/ui/page-title";
 import { Select as SelectClass } from "@/shared/ui/select";
+import { SwitchTabs } from "@/shared/ui/switch";
+import { type Attendance, AttendanceTable } from "@/widgets/attendance-table";
+import {
+    GradeBookTable,
+    gradeBookTableStore,
+} from "@/widgets/grade-book-table";
+import { type FinalGrade, GradeFinalTable } from "@/widgets/grade-final-table";
+import { type Grade } from "@/widgets/grade-table";
 import { NavBar } from "@/widgets/nav-bar-desktop";
 
 import s from "./GradeBookPageDesktop.module.scss";
 
-export type Tab = "grades" | "attendance";
-export type GradesTypes = "all" | "final";
+export default observer(function Home() {
+    const t = useTranslations();
+    const [activeTab, setActiveTab] = useState("grades");
+    const [activeGradeType, setActiveGradeType] = useState("all");
+    const [selectedClass, setSelectedClass] = useState<number | null>(null);
 
-export default function Home() {
-    const t = useTranslations("navigation");
-    const [activeTab, setActiveTab] = useState<Tab>("grades");
-    const [activeGradeType, setActiveGradeType] = useState<GradesTypes>("all");
-    const [selected, setSelected] = useState(classOptions[0]);
+    useEffect(() => {
+        classStore.fetchAll();
+        gradeBookTableStore.fetchAllGrades();
+    }, []);
+
+    useEffect(() => {
+        if (classStore.classes.length > 0 && selectedClass === null) {
+            setSelectedClass(classStore.classes[0].classId);
+        }
+    }, [classStore.classes, selectedClass]);
 
     return (
         <div className={s.container}>
@@ -35,21 +45,38 @@ export default function Home() {
             </div>
 
             <div className={s.topbar}>
-                <PageTitle title={t("grade-book")} />
+                <PageTitle title={t("navigation.grade-book")} />
                 <SelectClass
-                    selected={selected}
-                    setSelected={setSelected}
+                    selected={selectedClass}
+                    setSelected={setSelectedClass}
                     width={88}
-                    array={classOptions}
+                    array={classStore.classes}
+                    getLabel={(item) => item.name}
+                    getValue={(item) => item.classId}
                 />
-                <SwitchGradeAttendance
-                    activeTab={activeTab}
-                    setActiveTab={setActiveTab}
+                <SwitchTabs
+                    variant="outlined"
+                    tabs={[
+                        { label: t("navigation.grade"), value: "grades" },
+                        {
+                            label: t("navigation.attendance"),
+                            value: "attendance",
+                        },
+                    ]}
+                    active={activeTab}
+                    onChange={setActiveTab}
                 />
                 {activeTab === "grades" && (
-                    <SwitchGradesTypes
-                        activeGradeType={activeGradeType}
-                        setActiveGradeType={setActiveGradeType}
+                    <SwitchTabs
+                        variant="flat"
+                        tabs={[
+                            { label: t("grades-types.all"), value: "all" },
+                            { label: t("grades-types.final"), value: "final" },
+                        ]}
+                        active={activeGradeType}
+                        onChange={setActiveGradeType}
+                        buttonWidth={64}
+                        buttonPadding="9px 0"
                     />
                 )}
             </div>
@@ -59,17 +86,25 @@ export default function Home() {
                     .with("grades", () =>
                         match(activeGradeType)
                             .with("all", () => (
-                                <GradeTable
-                                    data={data}
-                                    subjectsByWeek={subjectsByWeek}
-                                    selectedClass={selected}
+                                <GradeBookTable
+                                    selectedClass={
+                                        classStore.classes.find(
+                                            (cls) =>
+                                                cls.classId === selectedClass
+                                        )?.name || ""
+                                    }
                                 />
                             ))
                             .with("final", () => (
                                 <GradeFinalTable
                                     data={exampleData}
                                     subjects={exampleSubjects}
-                                    selectedClass={selected}
+                                    selectedClass={
+                                        classStore.classes.find(
+                                            (cls) =>
+                                                cls.classId === selectedClass
+                                        )?.name || ""
+                                    }
                                 />
                             ))
                             .otherwise(() => null)
@@ -78,28 +113,18 @@ export default function Home() {
                         <AttendanceTable
                             data={attendanceData}
                             subjectsByDay={subjectsByDay}
-                            selectedClass={selected}
+                            selectedClass={
+                                classStore.classes.find(
+                                    (cls) => cls.classId === selectedClass
+                                )?.name || classStore.classes[0].name
+                            }
                         />
                     ))
                     .otherwise(() => null)}
             </div>
         </div>
     );
-}
-
-export const classOptions = [
-    "4 Б",
-    "5 А",
-    "5 Б",
-    "6 А",
-    "6 Б",
-    "7 А",
-    "7 Б",
-    "8 А",
-    "8 Б",
-    "9 А",
-    "9 Б",
-];
+});
 
 export const data: Grade[] = [
     {
@@ -415,7 +440,7 @@ export const subjectsByDay = [
         ],
     },
     {
-        date: new Date("2025-10-1"),
+        date: new Date("2025-10-01"),
         subjects: [
             {
                 subject: "Английский",
@@ -428,7 +453,7 @@ export const subjectsByDay = [
         ],
     },
     {
-        date: new Date("2025-10-2"),
+        date: new Date("2025-10-02"),
         subjects: [
             {
                 subject: "Английский",
@@ -437,6 +462,131 @@ export const subjectsByDay = [
             {
                 subject: "История",
                 hours: 1.5,
+            },
+        ],
+    },
+    {
+        date: new Date("2025-10-03"),
+        subjects: [
+            {
+                subject: "Английский язык",
+                hours: 2,
+            },
+            {
+                subject: "История",
+                hours: 1.5,
+            },
+            {
+                subject: "Биология",
+                hours: 2,
+            },
+            {
+                subject: "История",
+                hours: 1.5,
+            },
+            {
+                subject: "Литература",
+                hours: 2,
+            },
+        ],
+    },
+    {
+        date: new Date("2025-10-04"),
+        subjects: [
+            {
+                subject: "Английский язык",
+                hours: 2,
+            },
+            {
+                subject: "История",
+                hours: 1.5,
+            },
+            {
+                subject: "Биология",
+                hours: 2,
+            },
+            {
+                subject: "История",
+                hours: 1.5,
+            },
+            {
+                subject: "Литература",
+                hours: 2,
+            },
+        ],
+    },
+    {
+        date: new Date("2025-10-05"),
+        subjects: [
+            {
+                subject: "Английский язык",
+                hours: 2,
+            },
+            {
+                subject: "История",
+                hours: 1.5,
+            },
+            {
+                subject: "Биология",
+                hours: 2,
+            },
+            {
+                subject: "История",
+                hours: 1.5,
+            },
+            {
+                subject: "Литература",
+                hours: 2,
+            },
+        ],
+    },
+    {
+        date: new Date("2025-10-06"),
+        subjects: [
+            {
+                subject: "Английский язык",
+                hours: 2,
+            },
+            {
+                subject: "История",
+                hours: 1.5,
+            },
+            {
+                subject: "Биология",
+                hours: 2,
+            },
+            {
+                subject: "История",
+                hours: 1.5,
+            },
+            {
+                subject: "Литература",
+                hours: 2,
+            },
+        ],
+    },
+    {
+        date: new Date("2025-10-07"),
+        subjects: [
+            {
+                subject: "Английский язык",
+                hours: 2,
+            },
+            {
+                subject: "История",
+                hours: 1.5,
+            },
+            {
+                subject: "Биология",
+                hours: 2,
+            },
+            {
+                subject: "История",
+                hours: 1.5,
+            },
+            {
+                subject: "Литература",
+                hours: 2,
             },
         ],
     },

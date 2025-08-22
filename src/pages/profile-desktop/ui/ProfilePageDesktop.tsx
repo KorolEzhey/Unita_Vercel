@@ -9,14 +9,6 @@ import { ProfileCardDesktop } from "@/widgets/profile-card-desktop";
 
 import s from "./ProfilePageDesktop.module.scss";
 
-const user = {
-    id: "1",
-    surname: "Иванов",
-    name: "Иван",
-    patronymic: "Иванович",
-    jobTitle: "Учитель",
-};
-
 const profileFile = {
     id: "install-1",
     fileName: "Иванов 2025.pdf",
@@ -37,7 +29,7 @@ export default function Home() {
             </div>
 
             <div className={s.content}>
-                <ProfileCardDesktop user={user} file={profileFile} />
+                <ProfileCardDesktop file={profileFile} />
             </div>
         </div>
     );

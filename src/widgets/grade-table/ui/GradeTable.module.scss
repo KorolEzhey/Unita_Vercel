@@ -1,0 +1,50 @@
+.classHeader {
+    font-size: 32px;
+    font-weight: 500;
+    color: #404040;
+    padding: 60px 30px;
+    min-width: 320px;
+    min-height: 150px;
+}
+
+.weekHeader,
+.weekNumber {
+    background-color: #f5f6f7;
+    font-weight: 400;
+    min-width: 52px;
+    max-height: 24px;
+    height: 24px;
+}
+
+.subjectWrapper {
+    padding-inline: 12px;
+    vertical-align: bottom;
+}
+
+.subjectName {
+    color: #171717;
+    font-weight: 400;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.sticky1 {
+    position: sticky;
+    left: 0;
+    background: #fff;
+    z-index: 2;
+}
+
+.sticky2 {
+    position: sticky;
+    left: 320px;
+    background: #fff;
+    z-index: 2;
+}
+
+.stickyWeek {
+    position: sticky;
+    background: #f5f6f7;
+    left: 320px;
+    z-index: 2;
+}

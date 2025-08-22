@@ -1,0 +1,32 @@
+.lessonFilesList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fileItem {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--Border-neutral-200);
+    background: var(--Surface-white-100);
+    transition: all 0.2s ease;
+}
+
+.fileName {
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+
+    &:hover {
+        text-decoration: underline;
+        color: var(--primary-color-dark);
+    }
+}

@@ -2,34 +2,68 @@
 
 import clsx from "clsx";
 import { format } from "date-fns";
+import { observer } from "mobx-react-lite";
 import { useTranslations } from "next-intl";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { type Lesson } from "@/entities/lesson";
+import type { LessonResponse } from "@/entities/lesson";
+import { lessonStore } from "@/entities/lesson/model/lesson.store";
+import { teacherStore } from "@/entities/teacher";
+import { useUser } from "@/entities/user";
+import { AddLesson } from "@/features/add-lesson";
 import LessonDesktopPage from "@/pages/lesson-desktop";
-import CalendarIcon from "@/shared/icons/Calendar.svg";
-import { type DayInfo } from "@/shared/lib/constants";
-import { TeacherSelect } from "@/shared/ui/teacher-select/TeacherSelect";
+import { shortenFullName } from "@/shared/lib/shortenFullName";
+import { PageTitle } from "@/shared/ui/page-title";
+import { Select as TeacherSelect } from "@/shared/ui/select";
 import { NavBar } from "@/widgets/nav-bar-desktop";
 import { ScheduleCarousel } from "@/widgets/schedule-carousel";
 
+import { handleDateEnter } from "../model/handlers";
 import s from "./ScheduleDesktopPage.module.scss";
 
-const ScheduleDesktopPage = () => {
+export default observer(function ScheduleDesktopPage() {
     const t = useTranslations();
-    const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
-    const [currentDay, setCurrentDay] = useState<DayInfo | null>(null);
+    const [selectedLesson, setSelectedLesson] = useState<LessonResponse | null>(
+        null
+    );
     const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+    const [selectedTeacher, setSelectedTeacher] = useState<number | null>(null);
+    const [isOpen, setIsOpen] = useState(false);
+    const { data: user, isLoading } = useUser();
 
-    const handleLessonClick = (lesson: Lesson, day: DayInfo) => {
+    const handleLessonClick = (lesson: LessonResponse) => {
+        setIsOpen(false);
         setSelectedLesson(lesson);
-        setCurrentDay(day);
     };
 
     const handleClose = () => {
         setSelectedLesson(null);
-        setCurrentDay(null);
     };
+
+    useEffect(() => {
+        teacherStore.fetchAll();
+    }, []);
+
+    useEffect(() => {
+        if (!isLoading && user?.role === "TEACHER") {
+            setSelectedTeacher(user.id);
+        }
+    }, [isLoading, user]);
+
+    useEffect(() => {
+        if (
+            teacherStore.teachers.length > 0 &&
+            selectedTeacher === null &&
+            user?.role !== "TEACHER"
+        ) {
+            setSelectedTeacher(teacherStore.teachers[0].teacherId);
+        }
+    }, [selectedTeacher, user?.role]);
+
+    useEffect(() => {
+        if (selectedTeacher === null) return;
+        lessonStore.fetchLessonsByTeacher(selectedTeacher);
+    }, [selectedTeacher]);
 
     return (
         <div className={s.root}>
@@ -38,20 +72,31 @@ const ScheduleDesktopPage = () => {
             </div>
             <div className={s.content}>
                 <div className={s.pageHeader}>
-                    <h1 className={s.title}>{t("navigation.schedule")}</h1>
-                    <div className={s.calendarButton} onClick={() => {}}>
-                        <span>{format(selectedDate, "d.MM.yyyy")}</span>
-                        <CalendarIcon
-                            width={16}
-                            height={16}
-                            viewBox="0 0 32 32"
-                        />
-                    </div>
-                    <TeacherSelect
-                        className={s.teacherSelect}
-                        onChange={(value) => {}}
-                        disabled
+                    <PageTitle title={t("navigation.schedule")} />
+                    <input
+                        type="date"
+                        className={s.calendarInput}
+                        defaultValue={format(selectedDate, "yyyy-MM-dd")}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                handleDateEnter(e, setSelectedDate);
+                            }
+                        }}
                     />
+                    <div className={s.header}>
+                        <TeacherSelect
+                            selected={selectedTeacher}
+                            setSelected={setSelectedTeacher}
+                            width={200}
+                            array={teacherStore.teachers}
+                            getLabel={(item) => shortenFullName(item.fullName)}
+                            getValue={(item) => item.teacherId}
+                            disabled={!isLoading && user?.role !== "ADMIN"}
+                        />
+                        {!isLoading && user?.role === "ADMIN" && (
+                            <AddLesson handleAdd={() => setIsOpen(true)} />
+                        )}
+                    </div>
                 </div>
                 <div
                     className={clsx(s.contentWrapper, {
@@ -59,24 +104,29 @@ const ScheduleDesktopPage = () => {
                     })}
                 >
                     <ScheduleCarousel
+                        lessonsByTeacher={lessonStore.lessonsByTeacher}
                         onLessonSelect={handleLessonClick}
-                        selectedLesson={selectedLesson}
                         selectedDate={selectedDate}
-                        onDateChange={setSelectedDate}
+                        setSelectedDate={setSelectedDate}
                     />
                 </div>
                 {selectedLesson && (
                     <div className={s.lessonOverlay}>
                         <LessonDesktopPage
                             lesson={selectedLesson}
-                            day={currentDay!}
                             onClose={handleClose}
+                        />
+                    </div>
+                )}
+                {isOpen && (
+                    <div className={s.lessonOverlay}>
+                        <LessonDesktopPage
+                            onClose={() => setIsOpen(false)}
+                            selectedTeacher={selectedTeacher || 0}
                         />
                     </div>
                 )}
             </div>
         </div>
     );
-};
-
-export default ScheduleDesktopPage;
+});

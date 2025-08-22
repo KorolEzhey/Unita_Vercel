@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
+import { useUser } from "@/entities/user";
 import { FileInstallButton } from "@/features/installation-files";
 import { LogOutButton } from "@/features/logout-button";
 import { NavBar } from "@/widgets/nav-bar";
@@ -11,12 +12,7 @@ import s from "./ProfilePage.module.scss";
 
 export default function ProfilePage() {
     const t = useTranslations();
-    // TODO: заменить на реальные данные из API
-    const studentData = {
-        id: "1",
-        name: "Иван Иванов",
-        className: "ИСП-201",
-    };
+    const { data: user } = useUser();
 
     const profileFile = {
         id: "install-1",
@@ -30,7 +26,7 @@ export default function ProfilePage() {
             <main className={s.main}>
                 <div className={s.container}>
                     <h1 className={s.title}>{t("navigation.profile")}</h1>
-                    <ProfileCard student={studentData} />
+                    <ProfileCard id={user?.id ?? 0} />
                     <div className={s.fileInstallSection}>
                         <FileInstallButton
                             fileName={profileFile.name}

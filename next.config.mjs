@@ -4,11 +4,18 @@ const withNextIntl = createNextIntlPlugin("./src/shared/lib/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    eslint: {
-        ignoreDuringBuilds: true,
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: process.env.NEXT_PUBLIC_API_HOSTNAME,
+                pathname: "/users/*/avatar",
+            },
+        ],
+        dangerouslyAllowSVG: true,
     },
     webpack(config) {
-        // Grab the existing rule that handles SVG imports
+        // Получаем существуещее правило для обработки SVG ипортов
         const fileLoaderRule = config.module.rules.find((rule) =>
             rule.test?.test?.(".svg")
         );
@@ -29,7 +36,7 @@ const nextConfig = {
             }
         );
 
-        // Modify the file loader rule to ignore *.svg, since we have it handled now.
+        // Настроили file-loader на игнорирование .svg, так как теперь они обрабатываются иначе.
         fileLoaderRule.exclude = /\.svg$/i;
 
         return config;

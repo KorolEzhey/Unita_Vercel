@@ -6,6 +6,9 @@
     bottom: 80px;
     background-color: #fff;
     display: flex;
+    flex-direction: column;
+    z-index: 100;
+    height: 100%;
 }
 
 .content {
@@ -71,6 +74,14 @@
     padding: 0 16px;
 }
 
+.section {
+    margin-bottom: 24px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
 .topic {
     margin-bottom: 24px;
 
@@ -101,4 +112,23 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+.filesSection {
+    margin-bottom: 24px;
+
+    .sectionLabel {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 120%;
+        color: var(--dark-color);
+        margin-bottom: 12px;
+    }
+}
+
+.uploadFiles {
+    // Переопределяем стили для мобильной версии
+    min-width: auto !important;
+    max-width: 100% !important;
+    width: 100% !important;
 }

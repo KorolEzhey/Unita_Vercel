@@ -20,6 +20,26 @@
         "enterDescription": "Введите описание урока"
     },
     "calendar": {
+        "select_date": "гггг-мм-дд",
+        "january": "Январь",
+        "february": "Февраль",
+        "march": "Март",
+        "april": "Апрель",
+        "may": "Май",
+        "june": "Июнь",
+        "july": "Июль",
+        "august": "Август",
+        "september": "Сентябрь",
+        "october": "Октябрь",
+        "november": "Ноябрь",
+        "december": "Декабрь",
+        "monday": "Пн",
+        "tuesday": "Вт",
+        "wednesday": "Ср",
+        "thursday": "Чт",
+        "friday": "Пт",
+        "saturday": "Сб",
+        "sunday": "Вс",
         "days": {
             "short": ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
         },
@@ -51,7 +71,9 @@
         "profile": "Профиль",
         "grade-book": "Журналы",
         "logout": "Выход",
-        "attendance": "Посещаемость"
+        "attendance": "Посещаемость",
+        "database": "Базы данных",
+        "files": "Файлы"
     },
     "buttons": {
         "logout": "Выйти из аккаунта",
@@ -59,16 +81,18 @@
         "changePhoto": "Изменить фото",
         "save": "Сохранить",
         "delete": "Удалить",
-        "download": "Загрузить файл"
+        "download": "Загрузить файл",
+        "add-module": "Добавить модуль",
+        "add-lesson": "Добавить урок"
     },
     "quarters": {
-        "q1": "1 Пог",
-        "q2": "2 Пог",
-        "q3": "3 Пог",
-        "q4": "4 Пог",
-        "q5": "5 Пог",
-        "q6": "6 Пог",
-        "q7": "7 Пог",
+        "q1": "1 Пог.",
+        "q2": "2 Пог.",
+        "q3": "3 Пог.",
+        "q4": "4 Пог.",
+        "q5": "5 Пог.",
+        "q6": "6 Пог.",
+        "q7": "7 Пог.",
         "final": "Итог"
     },
     "dive_table": {
@@ -79,17 +103,46 @@
         "profile": "Профиль",
         "grade-book": "Журналы",
         "logout": "Выход",
-        "full-name": "ФИ",
+        "full-name": "ФИО",
         "class": "Класс",
         "date": "Дата",
         "lesson": "Урок",
-        "standard": "Эталон"
+        "standard": "Эталон",
+        "file": "Файл",
+        "period": "Период",
+        "grade-table": "Таблица оценок",
+        "class-label": "Класс"
     },
     "profile": {
-        "study-load": "Учебная нагрузка"
+        "study-load": "Учебная нагрузка",
+        "loading": "Загрузка профиля..."
     },
     "grades-types": {
         "all": "Все",
         "final": "Итог"
+    },
+
+    "tabs": {
+        "module": "Модуль",
+        "users": "Пользователи",
+        "other": "Другое",
+        "class": "Класс",
+        "subject": "Предмет",
+        "plan": "План",
+        "load": "Нагрузка"
+    },
+    "status": {
+        "uploading": "Загрузка...",
+        "other": "Другое",
+        "class": "Класс",
+        "subject": "Предмет",
+        "plan": "План",
+        "load": "Нагрузка",
+        "noLessonsToday": "Сегодня нет уроков"
+    },
+    "roles": {
+        "admin": "Админ",
+        "teacher": "Учитель",
+        "student": "Ученик"
     }
 }

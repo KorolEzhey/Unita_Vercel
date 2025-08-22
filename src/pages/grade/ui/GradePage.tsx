@@ -16,7 +16,7 @@ export default function Home() {
             }}
         >
             <GradeList />
-            <ProgressTable />
+            <ProgressTable classId={5} />
             <div style={{ flex: 1 }} />
             <NavBar />
         </div>

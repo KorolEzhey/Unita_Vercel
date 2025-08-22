@@ -1,0 +1,22 @@
+.root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #fff;
+}
+
+.schedule {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 80px;
+}
+
+.navBar {
+    flex-shrink: 0;
+}

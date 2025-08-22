@@ -21,16 +21,28 @@
         border: 1px solid var(--alt-light-grey);
 
         &:first-child {
-            width: 80px;
+            width: 80px !important;
         }
         &:nth-child(2) {
-            width: 151px;
+            width: 151px !important;
         }
         &:nth-child(3) {
-            width: 51px;
+            width: 51px !important;
         }
         &:last-child {
-            width: auto;
+            width: auto !important;
+        }
+        // В режиме итога первая колонка (модуль) имеет фиксированную ширину как у предмета
+        &:first-child.module-header {
+            width: 151px !important;
+        }
+        // В режиме итога вторая колонка (балл) имеет фиксированную ширину
+        &:nth-child(2).score-header {
+            width: 51px !important;
+        }
+        // В обычном режиме первая колонка (неделя) имеет фиксированную ширину
+        &:first-child.week-header {
+            width: 80px !important;
         }
     }
 }
@@ -52,16 +64,20 @@
         &:first-child {
             font-size: 14px;
             color: var(--grey);
+            width: 80px !important;
+
+            // В режиме итога первая колонка содержит названия модулей (как предметы)
+            &.module-name {
+                color: var(--dark-grey);
+                width: 151px !important;
+            }
         }
         &:nth-child(2) {
             font-size: 14px;
             color: var(--dark-grey);
         }
         &:nth-child(3) {
-            padding-left: 0;
             font-size: 16px;
-            text-align: center; // горизонтально
-            vertical-align: middle;
         }
     }
 
@@ -85,6 +101,7 @@
             font-size: 12px;
             font-weight: 500;
             color: var(--dark-grey);
+            width: 80px !important;
         }
         td:nth-child(3) {
             font-weight: 500;
@@ -99,12 +116,43 @@
             background-size: 16px 1px;
             background-repeat: repeat-x;
         }
+        // В режиме итога 3-я колонка (actions) растягивается
+        td:nth-child(3) {
+            width: auto;
+        }
+        // В режиме итога 2-я колонка (балл) имеет фиксированную ширину
+        td:nth-child(2) {
+            width: 51px;
+            font-weight: 500;
+            color: var(--foreground);
+            font-size: 16px;
+        }
+        // В режиме итога 1-я колонка (модуль) имеет фиксированную ширину
+        td:first-child {
+            width: 151px;
+            font-weight: 500;
+        }
+        // В обычном режиме 3-я колонка (actions) растягивается
+        td:nth-child(3) {
+            width: auto;
+        }
+        // В обычном режиме 4-я колонка (пустая) растягивается
+        td:nth-child(4) {
+            width: auto;
+        }
+        // В режиме итога первая колонка (модуль) имеет фиксированную ширину
+        td:first-child.module-name {
+            width: 151px !important;
+            font-weight: 500;
+        }
     }
 }
 
 .row td {
+    // Стили для колонки баллов в обычном режиме (3-я колонка)
     &:nth-child(3) {
         font-size: 16px;
+
         &.grade-red {
             background-color: var(--grade-red);
         }
@@ -117,5 +165,25 @@
         &.grade-green {
             background-color: var(--grade-green);
         }
+    }
+
+    // Стили для колонки баллов в режиме итога (2-я колонка)
+    &.score-cell {
+        font-size: 16px;
+        color: var(--foreground);
+    }
+
+    // Стили для цветов оценок
+    &.grade-red {
+        background-color: var(--grade-red);
+    }
+    &.grade-orange {
+        background-color: var(--grade-orange);
+    }
+    &.grade-yellow {
+        background-color: var(--grade-yellow);
+    }
+    &.grade-green {
+        background-color: var(--grade-green);
     }
 }

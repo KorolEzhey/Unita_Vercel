@@ -1,93 +1,24 @@
+import { format, parseISO } from "date-fns";
 import React, { useState } from "react";
 
-import type { Lesson } from "@/entities/lesson";
+import type { LessonResponse } from "@/entities/lesson";
 import { LessonPage } from "@/pages/lesson/ui/LessonPage";
+import { LESSON_NUMBER_OFFSET } from "@/shared/lib/constants";
+import { shortenFullName } from "@/shared/lib/shortenFullName";
 
+import NoLessonsImage from "./noLessons.svg";
 import s from "./ScheduleList.module.scss";
 
-const mockLessons: Lesson[] = [
-    {
-        id: "1",
-        title: "Математика",
-        teacher: "Иванова И.И.",
-        classroom: "301",
-        class: "11А",
-        weekPattern: 1,
-        startTime: "08:30",
-        endTime: "11:10",
-        topics: [
-            {
-                id: "1.1",
-                title: "Дифференциальные уравнения и интегральное исчисление",
-                description:
-                    "Основы дифференциальных уравнений первого порядка. Методы интегрирования функций.",
-                materials: [
-                    {
-                        id: "1.1.1",
-                        name: "Конспект лекции",
-                        url: "/files/diff_eq_lecture.pdf",
-                    },
-                    {
-                        id: "1.1.2",
-                        name: "Задачник",
-                        url: "/files/diff_eq_problems.pdf",
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        id: "2",
-        title: "Русский язык",
-        teacher: "Петров П.П.",
-        classroom: "205",
-        class: "11А",
-        weekPattern: 1,
-        startTime: "11:20",
-        endTime: "14:00",
-        topics: [
-            {
-                id: "2.1",
-                title: "Синтаксис сложного предложения",
-                description: "Виды сложных предложений и их особенности",
-            },
-        ],
-    },
-    {
-        id: "3",
-        title: "Физика",
-        teacher: "Сидоров С.С.",
-        classroom: "401",
-        class: "11А",
-        weekPattern: 1,
-        startTime: "14:10",
-        endTime: "16:50",
-        topics: [
-            {
-                id: "3.1",
-                title: "Механика",
-                description: "Законы Ньютона и их применение",
-                materials: [
-                    {
-                        id: "3.1.1",
-                        name: "Презентация",
-                        url: "/files/mechanics_presentation.pdf",
-                    },
-                    {
-                        id: "3.1.2",
-                        name: "Лабораторная работа",
-                        url: "/files/mechanics_lab.pdf",
-                    },
-                ],
-            },
-        ],
-    },
-];
+type ScheduleListProps = {
+    lessons: LessonResponse[];
+};
 
-export const ScheduleList = () => {
-    const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
+export const ScheduleList: React.FC<ScheduleListProps> = ({ lessons }) => {
+    const [selectedLesson, setSelectedLesson] = useState<LessonResponse | null>(
+        null
+    );
 
-    const handleLessonClick = (lesson: Lesson) => {
+    const handleLessonClick = (lesson: LessonResponse) => {
         setSelectedLesson(lesson);
     };
 
@@ -95,32 +26,55 @@ export const ScheduleList = () => {
         setSelectedLesson(null);
     };
 
+    if (lessons.length === 0) {
+        return (
+            <div className={s.noLessons}>
+                <NoLessonsImage />
+                <p style={{ fontSize: "24px" }}>
+                    Сегодня отдыхаем!
+                    <br />
+                    Уроков нет
+                </p>
+            </div>
+        );
+    }
+
     return (
         <div className={s.root}>
             <ul className={s.list}>
-                {mockLessons.map((lesson, index) => (
-                    <React.Fragment key={lesson.id}>
-                        <div className={s.lessonContainer}>
-                            <div className={s.lessonNumber}>{index + 1}</div>
-                            <div className={s.lessonContent}>
-                                <div className={s.time}>
-                                    {lesson.startTime}-{lesson.endTime}
+                {lessons
+                    .slice()
+                    .sort(
+                        (a, b) =>
+                            new Date(a.startTime).getTime() -
+                            new Date(b.startTime).getTime()
+                    )
+                    .map((lesson, index) => (
+                        <React.Fragment key={lesson.lessonID}>
+                            <div className={s.time}>
+                                {format(parseISO(lesson.startTime), "HH:mm")}-
+                                {format(parseISO(lesson.endTime), "HH:mm")}
+                            </div>
+                            <div className={s.listItem}>
+                                <div className={s.lessonNumber}>
+                                    {index + LESSON_NUMBER_OFFSET}
                                 </div>
                                 <li
                                     className={s.item}
                                     onClick={() => handleLessonClick(lesson)}
                                 >
                                     <div className={s.subject}>
-                                        {lesson.title}
+                                        {lesson.subject.name}
                                     </div>
                                     <div className={s.teacher}>
-                                        {lesson.teacher}
+                                        {shortenFullName(
+                                            lesson.teacher.user.fullName
+                                        )}
                                     </div>
                                 </li>
                             </div>
-                        </div>
-                    </React.Fragment>
-                ))}
+                        </React.Fragment>
+                    ))}
             </ul>
 
             {selectedLesson && (

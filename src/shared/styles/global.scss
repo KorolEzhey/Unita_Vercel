@@ -14,3 +14,25 @@ body {
     margin: 0;
     @include transition-colors;
 }
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="time"] {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+input[type="number"] {
+    appearance: none;
+    -moz-appearance: textfield;
+}
+

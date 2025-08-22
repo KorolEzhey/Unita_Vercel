@@ -1,0 +1,26 @@
+.button {
+    border-radius: 12px;
+    border: 1px solid #0066fe;
+    height: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    padding-inline: 20px;
+
+    &:hover {
+        background: #e6f0ff;
+    }
+
+    &:active {
+        background: #d9e8ff;
+    }
+}
+
+.content {
+    color: #0066fe;
+    font-weight: 500;
+    font-size: 14px;
+    white-space: nowrap;
+}

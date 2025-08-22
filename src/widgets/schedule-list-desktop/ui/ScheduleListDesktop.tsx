@@ -1,149 +1,36 @@
 "use client";
 
 import clsx from "clsx";
+import { format, parseISO } from "date-fns";
+import { useTranslations } from "next-intl";
 import React from "react";
 
-import { type Lesson } from "@/entities/lesson";
+import type { Lesson, LessonResponse } from "@/entities/lesson";
 import { LESSON_NUMBER_OFFSET } from "@/shared/lib/constants";
 
 import s from "./ScheduleListDesktop.module.scss";
 
-const mockSchedule: Record<number, Lesson[]> = {
-    1: [
-        {
-            id: "1.1",
-            title: "Русский язык",
-            startTime: "08:30",
-            endTime: "10:00",
-            weekPattern: 1,
-            class: "11A",
-            teacher: "Иванова А.П.",
-            classroom: "301",
-            topics: [
-                {
-                    id: "1.1.1",
-                    title: "Тема урока",
-                    description: "Описание темы урока",
-                },
-            ],
-        },
-        {
-            id: "1.2",
-            title: "Математика",
-            startTime: "10:10",
-            endTime: "11:40",
-            weekPattern: 1,
-            class: "11A",
-            teacher: "Петрова М.С.",
-            classroom: "305",
-            topics: [
-                {
-                    id: "1.2.1",
-                    title: "Тема урока",
-                    description: "Описание темы урока",
-                },
-            ],
-        },
-    ],
-    2: [
-        {
-            id: "2.1",
-            title: "История",
-            startTime: "10:10",
-            endTime: "11:40",
-            weekPattern: 1,
-            class: "10B",
-            teacher: "Сидоров И.В.",
-            classroom: "205",
-            topics: [
-                {
-                    id: "2.1.1",
-                    title: "Тема урока",
-                    description: "Описание темы урока",
-                },
-            ],
-        },
-        {
-            id: "2.2",
-            title: "Физика",
-            startTime: "12:10",
-            endTime: "13:40",
-            weekPattern: 1,
-            class: "10B",
-            teacher: "Кузнецов П.Р.",
-            classroom: "401",
-            topics: [
-                {
-                    id: "2.2.1",
-                    title: "Тема урока",
-                    description: "Описание темы урока",
-                },
-            ],
-        },
-    ],
-    3: [
-        {
-            id: "3.1",
-            title: "Информатика",
-            startTime: "08:30",
-            endTime: "10:00",
-            weekPattern: 1,
-            class: "9A",
-            teacher: "Николаев С.А.",
-            classroom: "310",
-            topics: [
-                {
-                    id: "3.1.1",
-                    title: "Тема урока",
-                    description: "Описание темы урока",
-                },
-            ],
-        },
-        {
-            id: "3.2",
-            title: "Английский язык",
-            startTime: "13:50",
-            endTime: "15:20",
-            weekPattern: 1,
-            class: "9A",
-            teacher: "Смирнова О.В.",
-            classroom: "201",
-            topics: [
-                {
-                    id: "3.2.1",
-                    title: "Тема урока",
-                    description: "Описание темы урока",
-                },
-            ],
-        },
-    ],
-};
-
 type ScheduleListDesktopProps = {
-    day?: number;
-    selectedLesson: Lesson | null;
-    onLessonSelect: (lesson: Lesson) => void;
+    lessonsByTeacher: LessonResponse[];
+    selectedLesson: LessonResponse | null;
+    onLessonSelect: (lesson: LessonResponse) => void;
 };
 
 export const ScheduleListDesktop: React.FC<ScheduleListDesktopProps> = ({
-    day = 1,
+    lessonsByTeacher,
     selectedLesson,
     onLessonSelect,
 }) => {
-    const handleLessonClick = (lesson: Lesson) => {
+    const handleLessonClick = (lesson: LessonResponse) => {
         onLessonSelect(lesson);
     };
 
-    const getLessons = () => {
-        return mockSchedule[day] || [];
-    };
+    const t = useTranslations();
 
-    const lessons = getLessons();
-
-    if (lessons?.length === 0) {
+    if (lessonsByTeacher?.length === 0) {
         return (
             <div className={s.root}>
-                <div className={s.noLessons}>Сегодня нет уроков</div>
+                <div className={s.noLessons}>{t("status.noLessonsToday")}</div>
             </div>
         );
     }
@@ -153,41 +40,65 @@ export const ScheduleListDesktop: React.FC<ScheduleListDesktopProps> = ({
             <div className={s.container}>
                 <div className={s.listContainer}>
                     <ul className={s.list}>
-                        {lessons.map((lesson) => (
-                            <li key={lesson.id} className={s.listItem}>
-                                <div className={s.lessonNumber}>
-                                    {lessons.indexOf(lesson) +
-                                        LESSON_NUMBER_OFFSET}
-                                </div>
-                                <div
-                                    className={clsx(s.item, {
-                                        [s.active]:
-                                            selectedLesson?.id === lesson.id,
-                                    })}
-                                    onClick={() => handleLessonClick(lesson)}
+                        {lessonsByTeacher
+                            .slice()
+                            .sort(
+                                (a, b) =>
+                                    new Date(a.startTime).getTime() -
+                                    new Date(b.startTime).getTime()
+                            )
+                            .map((lesson, index) => (
+                                <li
+                                    key={lesson.lessonID}
+                                    className={s.listItem}
                                 >
-                                    <div className={s.headerContainer}>
-                                        <div className={s.timeContainer}>
-                                            <div className={s.time}>
-                                                {lesson.startTime}
+                                    <div className={s.lessonNumber}>
+                                        {index + LESSON_NUMBER_OFFSET}
+                                    </div>
+                                    <div
+                                        className={clsx(s.item, {
+                                            [s.active]:
+                                                selectedLesson?.lessonID ===
+                                                lesson.lessonID,
+                                        })}
+                                        onClick={() =>
+                                            handleLessonClick(lesson)
+                                        }
+                                    >
+                                        <div className={s.headerContainer}>
+                                            <div className={s.timeContainer}>
+                                                <div className={s.time}>
+                                                    {format(
+                                                        parseISO(
+                                                            lesson.startTime
+                                                        ),
+                                                        "HH:mm"
+                                                    )}
+                                                </div>
+                                                <div className={s.divider}>
+                                                    –
+                                                </div>
+                                                <div className={s.time}>
+                                                    {format(
+                                                        parseISO(
+                                                            lesson.endTime
+                                                        ),
+                                                        "HH:mm"
+                                                    )}
+                                                </div>
                                             </div>
-                                            <div className={s.divider}>–</div>
-                                            <div className={s.time}>
-                                                {lesson.endTime}
+                                            <div className={s.classInfo}>
+                                                {lesson.class.name}
                                             </div>
                                         </div>
-                                        <div className={s.classInfo}>
-                                            {lesson.class}
+                                        <div className={s.contentContainer}>
+                                            <div className={s.subject}>
+                                                {lesson.subject.name}
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className={s.contentContainer}>
-                                        <div className={s.subject}>
-                                            {lesson.title}
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        ))}
+                                </li>
+                            ))}
                     </ul>
                 </div>
             </div>

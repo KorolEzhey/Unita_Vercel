@@ -1,11 +1,13 @@
 .root {
     width: 100%;
+    min-height: 40px;
     background: var(--light-color);
     border-top: 1px solid var(--alt-light-grey);
     position: fixed;
     bottom: 0;
     left: 0;
     z-index: 100;
+    display: table-column;
 }
 
 .navigation_wrapper {
