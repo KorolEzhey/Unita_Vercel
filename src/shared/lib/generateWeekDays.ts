@@ -1,7 +1,7 @@
 import { addDays, format, startOfWeek } from "date-fns";
 import { enUS, ru } from "date-fns/locale";
 
-import { WORK_DAYS_COUNT, getWeekDays, type WeekDay } from "./constants";
+import { getWeekDays, type WeekDay, WORK_DAYS_COUNT } from "./constants";
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 

@@ -10,7 +10,7 @@ import { NavBarButton } from "@/shared/ui/nav-bar";
 import DatabaseIcon from "./databaseIcon.svg";
 import FileIcon from "./fileIcon.svg";
 import GradeIcon from "./gradeIcon.svg";
-import s from "./NavBarDesktop.module.scss";
+import s from "./navBarDesktop.module.scss";
 import ScheduleIcon from "./scheduleIcon.svg";
 
 export const NavBar = () => {
