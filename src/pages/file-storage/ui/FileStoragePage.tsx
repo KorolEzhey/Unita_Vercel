@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { match } from "ts-pattern";
 
+import { DesktopGuard } from "@/shared/ui";
 import { PageTitle } from "@/shared/ui/page-title";
 import { SwitchTabs } from "@/shared/ui/switch";
 import { LoadsTable } from "@/widgets/loads-table";
@@ -18,31 +19,33 @@ export default function Home() {
     const [activeTab, setActiveTab] = useState("plan");
 
     return (
-        <div className={s.container}>
-            <div className={s.sidebar}>
-                <NavBar />
-            </div>
+        <DesktopGuard>
+            <div className={s.container}>
+                <div className={s.sidebar}>
+                    <NavBar />
+                </div>
 
-            <div className={s.topbar}>
-                <PageTitle title={t("navigation.files")} />
-                <SwitchTabs
-                    variant="outlined"
-                    tabs={[
-                        { label: t("tabs.plan"), value: "plan" },
-                        { label: t("tabs.load"), value: "load" },
-                    ]}
-                    active={activeTab}
-                    onChange={setActiveTab}
-                />
-            </div>
+                <div className={s.topbar}>
+                    <PageTitle title={t("navigation.files")} />
+                    <SwitchTabs
+                        variant="outlined"
+                        tabs={[
+                            { label: t("tabs.plan"), value: "plan" },
+                            { label: t("tabs.load"), value: "load" },
+                        ]}
+                        active={activeTab}
+                        onChange={setActiveTab}
+                    />
+                </div>
 
-            <div className={s.content}>
-                {match({ activeTab })
-                    .with({ activeTab: "plan" }, () => <PlansTable />)
-                    .with({ activeTab: "load" }, () => <LoadsTable />)
-                    .otherwise(() => null)}
+                <div className={s.content}>
+                    {match({ activeTab })
+                        .with({ activeTab: "plan" }, () => <PlansTable />)
+                        .with({ activeTab: "load" }, () => <LoadsTable />)
+                        .otherwise(() => null)}
+                </div>
             </div>
-        </div>
+        </DesktopGuard>
     );
 }
 

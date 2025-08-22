@@ -10,6 +10,7 @@ import { classStore } from "@/entities/class";
 import { PageTitle } from "@/shared/ui/page-title";
 import { Select as SelectClass } from "@/shared/ui/select";
 import { SwitchTabs } from "@/shared/ui/switch";
+import { DesktopGuard } from "@/shared/ui";
 import { type Attendance, AttendanceTable } from "@/widgets/attendance-table";
 import {
     GradeBookTable,
@@ -39,90 +40,97 @@ export default observer(function Home() {
     }, [classStore.classes, selectedClass]);
 
     return (
-        <div className={s.container}>
-            <div className={s.sidebar}>
-                <NavBar />
-            </div>
+        <DesktopGuard>
+            <div className={s.container}>
+                <div className={s.sidebar}>
+                    <NavBar />
+                </div>
 
-            <div className={s.topbar}>
-                <PageTitle title={t("navigation.grade-book")} />
-                <SelectClass
-                    selected={selectedClass}
-                    setSelected={setSelectedClass}
-                    width={88}
-                    array={classStore.classes}
-                    getLabel={(item) => item.name}
-                    getValue={(item) => item.classId}
-                />
-                <SwitchTabs
-                    variant="outlined"
-                    tabs={[
-                        { label: t("navigation.grade"), value: "grades" },
-                        {
-                            label: t("navigation.attendance"),
-                            value: "attendance",
-                        },
-                    ]}
-                    active={activeTab}
-                    onChange={setActiveTab}
-                />
-                {activeTab === "grades" && (
-                    <SwitchTabs
-                        variant="flat"
-                        tabs={[
-                            { label: t("grades-types.all"), value: "all" },
-                            { label: t("grades-types.final"), value: "final" },
-                        ]}
-                        active={activeGradeType}
-                        onChange={setActiveGradeType}
-                        buttonWidth={64}
-                        buttonPadding="9px 0"
+                <div className={s.topbar}>
+                    <PageTitle title={t("navigation.grade-book")} />
+                    <SelectClass
+                        selected={selectedClass}
+                        setSelected={setSelectedClass}
+                        width={88}
+                        array={classStore.classes}
+                        getLabel={(item) => item.name}
+                        getValue={(item) => item.classId}
                     />
-                )}
-            </div>
-
-            <div className={s.content}>
-                {match(activeTab)
-                    .with("grades", () =>
-                        match(activeGradeType)
-                            .with("all", () => (
-                                <GradeBookTable
-                                    selectedClass={
-                                        classStore.classes.find(
-                                            (cls) =>
-                                                cls.classId === selectedClass
-                                        )?.name || ""
-                                    }
-                                />
-                            ))
-                            .with("final", () => (
-                                <GradeFinalTable
-                                    data={exampleData}
-                                    subjects={exampleSubjects}
-                                    selectedClass={
-                                        classStore.classes.find(
-                                            (cls) =>
-                                                cls.classId === selectedClass
-                                        )?.name || ""
-                                    }
-                                />
-                            ))
-                            .otherwise(() => null)
-                    )
-                    .with("attendance", () => (
-                        <AttendanceTable
-                            data={attendanceData}
-                            subjectsByDay={subjectsByDay}
-                            selectedClass={
-                                classStore.classes.find(
-                                    (cls) => cls.classId === selectedClass
-                                )?.name || classStore.classes[0].name
-                            }
+                    <SwitchTabs
+                        variant="outlined"
+                        tabs={[
+                            { label: t("navigation.grade"), value: "grades" },
+                            {
+                                label: t("navigation.attendance"),
+                                value: "attendance",
+                            },
+                        ]}
+                        active={activeTab}
+                        onChange={setActiveTab}
+                    />
+                    {activeTab === "grades" && (
+                        <SwitchTabs
+                            variant="flat"
+                            tabs={[
+                                { label: t("grades-types.all"), value: "all" },
+                                {
+                                    label: t("grades-types.final"),
+                                    value: "final",
+                                },
+                            ]}
+                            active={activeGradeType}
+                            onChange={setActiveGradeType}
+                            buttonWidth={64}
+                            buttonPadding="9px 0"
                         />
-                    ))
-                    .otherwise(() => null)}
+                    )}
+                </div>
+
+                <div className={s.content}>
+                    {match(activeTab)
+                        .with("grades", () =>
+                            match(activeGradeType)
+                                .with("all", () => (
+                                    <GradeBookTable
+                                        selectedClass={
+                                            classStore.classes.find(
+                                                (cls) =>
+                                                    cls.classId ===
+                                                    selectedClass
+                                            )?.name || ""
+                                        }
+                                    />
+                                ))
+                                .with("final", () => (
+                                    <GradeFinalTable
+                                        data={exampleData}
+                                        subjects={exampleSubjects}
+                                        selectedClass={
+                                            classStore.classes.find(
+                                                (cls) =>
+                                                    cls.classId ===
+                                                    selectedClass
+                                            )?.name || ""
+                                        }
+                                    />
+                                ))
+                                .otherwise(() => null)
+                        )
+                        .with("attendance", () => (
+                            <AttendanceTable
+                                data={exampleAttendanceData}
+                                subjectsByDay={subjectsByDay}
+                                selectedClass={
+                                    classStore.classes.find(
+                                        (cls) => cls.classId === selectedClass
+                                    )?.name || ""
+                                }
+                            />
+                        ))
+                        .otherwise(() => null)}
+                </div>
             </div>
-        </div>
+        </DesktopGuard>
     );
 });
 
@@ -250,7 +258,7 @@ export const exampleData: FinalGrade[] = [
     },
 ];
 
-export const attendanceData: Attendance[] = [
+export const exampleAttendanceData: Attendance[] = [
     {
         studentId: 1,
         studentName: "Юнг Августин",

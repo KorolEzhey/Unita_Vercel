@@ -1,5 +1,10 @@
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://unita55.ru";
 
+export const AUTH = {
+    TOKEN_REFRESH_INTERVAL: 14 * 60 * 1000, // 14 минут в миллисекундах
+    TOKEN_REFRESH_OFFSET: 2 * 60 * 1000, // 2 минуты до истечения токена
+} as const;
+
 export const FILE_LIMITS = {
     AVATAR: {
         MAX_SIZE: 2 * 1024 * 1024,

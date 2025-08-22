@@ -12,7 +12,7 @@ import { useUser } from "@/entities/user";
 import { UploadFiles, type UploadFilesRef } from "@/features/upload-files";
 import DoubleArrowLeftIcon from "@/shared/icons/DoubleArrowLeft.svg";
 import { useFormatDateWithLocale } from "@/shared/lib/formatDateWithLocale";
-import { ActionButton } from "@/shared/ui";
+import { ActionButton, DesktopGuard } from "@/shared/ui";
 import { LessonInfoDesktop } from "@/widgets/lesson-info-desktop";
 
 import {
@@ -143,79 +143,83 @@ const LessonDesktopPage: React.FC<Props> = observer(
         };
 
         return (
-            <div className={s.root}>
-                <div className={s.header}>
-                    {onClose && (
-                        <button className={s.backButton} onClick={onClose}>
-                            <DoubleArrowLeftIcon
-                                width={28}
-                                height={28}
-                                viewBox="0 0 32 32"
-                            />
-                        </button>
-                    )}
-                    <div className={s.dayTitle}>
-                        {lesson
-                            ? useFormatDateWithLocale(lesson.startTime)
-                            : "Добавление урока"}
+            <DesktopGuard>
+                <div className={s.root}>
+                    <div className={s.header}>
+                        {onClose && (
+                            <button className={s.backButton} onClick={onClose}>
+                                <DoubleArrowLeftIcon
+                                    width={28}
+                                    height={28}
+                                    viewBox="0 0 32 32"
+                                />
+                            </button>
+                        )}
+                        <div className={s.dayTitle}>
+                            {lesson
+                                ? useFormatDateWithLocale(lesson.startTime)
+                                : "Добавление урока"}
+                        </div>
+                    </div>
+                    <LessonInfoDesktop
+                        key={lesson?.lessonID}
+                        lesson={lesson}
+                        lessonForm={lessonForm}
+                        dateRef={dateRef as RefObject<HTMLInputElement>}
+                        startTimeRef={
+                            startTimeRef as RefObject<HTMLInputElement>
+                        }
+                        endTimeRef={endTimeRef as RefObject<HTMLInputElement>}
+                    />
+                    <div className={s.uploadSection}>
+                        <UploadFiles
+                            lessonId={lesson?.lessonID}
+                            onFileUploaded={(file) => {
+                                console.log("File uploaded:", file);
+                            }}
+                            ref={uploadFilesRef}
+                        />
+                    </div>
+
+                    <div className={s.actions}>
+                        <ActionButton
+                            variant="primary"
+                            onClick={
+                                !isLoading && user?.role === "ADMIN"
+                                    ? handleSaveWithFiles
+                                    : handleTeacherSaveWithFiles
+                            }
+                        >
+                            {t("buttons.save")}
+                        </ActionButton>
+                        <ActionButton
+                            variant="alert"
+                            onClick={
+                                lesson
+                                    ? () => handleDelete(lesson.lessonID)
+                                    : () => {}
+                            }
+                            disabled={
+                                !lesson?.lessonID ||
+                                (!isLoading && user?.role !== "ADMIN")
+                            }
+                            style={
+                                !lesson?.lessonID ||
+                                (!isLoading && user?.role !== "ADMIN")
+                                    ? {
+                                          backgroundColor: "#F5F6F7",
+                                          border: "none",
+                                          color: "#A3A3A3",
+                                          cursor: "default",
+                                      }
+                                    : undefined
+                            }
+                        >
+                            {t("buttons.delete")}
+                        </ActionButton>
                     </div>
                 </div>
-                <LessonInfoDesktop
-                    key={lesson?.lessonID}
-                    lesson={lesson}
-                    lessonForm={lessonForm}
-                    dateRef={dateRef as RefObject<HTMLInputElement>}
-                    startTimeRef={startTimeRef as RefObject<HTMLInputElement>}
-                    endTimeRef={endTimeRef as RefObject<HTMLInputElement>}
-                />
-                <div className={s.uploadSection}>
-                    <UploadFiles
-                        lessonId={lesson?.lessonID}
-                        onFileUploaded={(file) => {
-                            console.log("File uploaded:", file);
-                        }}
-                        ref={uploadFilesRef}
-                    />
-                </div>
-
-                <div className={s.actions}>
-                    <ActionButton
-                        variant="primary"
-                        onClick={
-                            !isLoading && user?.role === "ADMIN"
-                                ? handleSaveWithFiles
-                                : handleTeacherSaveWithFiles
-                        }
-                    >
-                        {t("buttons.save")}
-                    </ActionButton>
-                    <ActionButton
-                        variant="alert"
-                        onClick={
-                            lesson
-                                ? () => handleDelete(lesson.lessonID)
-                                : () => {}
-                        }
-                        disabled={
-                            !lesson?.lessonID ||
-                            (!isLoading && user?.role !== "ADMIN")
-                        }
-                        style={
-                            !lesson?.lessonID ||
-                            (!isLoading && user?.role !== "ADMIN")
-                                ? {
-                                      backgroundColor: "#F5F6F7",
-                                      border: "none",
-                                      color: "#A3A3A3",
-                                      cursor: "default",
-                                  }
-                                : undefined
-                        }
-                    >
-                        {t("buttons.delete")}
-                    </ActionButton>
-                </div>
-            </div>
+            </DesktopGuard>
         );
     }
 );

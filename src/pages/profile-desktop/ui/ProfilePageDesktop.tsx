@@ -3,6 +3,7 @@ import "@/shared/styles/global.scss";
 
 import { useTranslations } from "next-intl";
 
+import { DesktopGuard } from "@/shared/ui";
 import { PageTitle } from "@/shared/ui/page-title";
 import { NavBar } from "@/widgets/nav-bar-desktop";
 import { ProfileCardDesktop } from "@/widgets/profile-card-desktop";
@@ -19,18 +20,20 @@ export default function Home() {
     const t = useTranslations("navigation");
 
     return (
-        <div className={s.container}>
-            <div className={s.sidebar}>
-                <NavBar />
-            </div>
+        <DesktopGuard>
+            <div className={s.container}>
+                <div className={s.sidebar}>
+                    <NavBar />
+                </div>
 
-            <div className={s.topbar}>
-                <PageTitle title={t("profile")} />
-            </div>
+                <div className={s.topbar}>
+                    <PageTitle title={t("profile")} />
+                </div>
 
-            <div className={s.content}>
-                <ProfileCardDesktop file={profileFile} />
+                <div className={s.content}>
+                    <ProfileCardDesktop file={profileFile} />
+                </div>
             </div>
-        </div>
+        </DesktopGuard>
     );
 }

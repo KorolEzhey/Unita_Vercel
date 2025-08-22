@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 import { authApi, type LoginCredentials } from "@/shared/api/auth";
 import { api } from "@/shared/api/config";
+import { AUTH } from "@/shared/lib/constants";
 
 class AuthStore {
     isAuthenticated = false;
@@ -9,11 +10,15 @@ class AuthStore {
     error: string | null = null;
     private isRefreshing = false;
     private refreshSubscribers: ((token: string) => void)[] = [];
+    private autoRefreshTimer: NodeJS.Timeout | null = null;
 
     constructor() {
         makeAutoObservable(this);
         if (typeof window !== "undefined") {
             this.isAuthenticated = !!sessionStorage.getItem("access_token");
+            if (this.isAuthenticated) {
+                this.startAutoRefresh();
+            }
         }
         this.setupRefreshInterceptor();
     }
@@ -28,6 +33,44 @@ class AuthStore {
 
     private setAuthenticated(authenticated: boolean) {
         this.isAuthenticated = authenticated;
+        if (authenticated) {
+            this.startAutoRefresh();
+        } else {
+            this.stopAutoRefresh();
+        }
+    }
+
+    private startAutoRefresh() {
+        this.stopAutoRefresh(); // Останавливаем предыдущий таймер если есть
+        this.autoRefreshTimer = setInterval(() => {
+            this.refreshTokenSilently();
+        }, AUTH.TOKEN_REFRESH_INTERVAL);
+    }
+
+    private stopAutoRefresh() {
+        if (this.autoRefreshTimer) {
+            clearInterval(this.autoRefreshTimer);
+            this.autoRefreshTimer = null;
+        }
+    }
+
+    private async refreshTokenSilently() {
+        if (this.isRefreshing || !this.isAuthenticated) {
+            return;
+        }
+
+        try {
+            this.isRefreshing = true;
+            const response = await authApi.refresh();
+            const newAccessToken = response.accessToken;
+            this.setAccessToken(newAccessToken);
+        } catch (error) {
+            console.error("Auto token refresh failed:", error);
+            // При ошибке автоматического обновления не делаем logout,
+            // пользователь может продолжать работать до истечения токена
+        } finally {
+            this.isRefreshing = false;
+        }
     }
 
     private setupRefreshInterceptor() {
@@ -120,6 +163,7 @@ class AuthStore {
         this.setAuthenticated(false);
         this.isRefreshing = false;
         this.refreshSubscribers = [];
+        this.stopAutoRefresh();
     }
 
     async logout(): Promise<void> {
