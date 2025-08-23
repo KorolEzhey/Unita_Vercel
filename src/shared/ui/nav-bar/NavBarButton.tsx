@@ -27,6 +27,7 @@ export const NavBarButton: FC<NavBarButtonProps> = ({
         onClick={onClick}
         className={clsx(
             s.button,
+            "nav-bar-button",
             {
                 [s.active]: isActive,
                 [s.desktop]: isDesktop,

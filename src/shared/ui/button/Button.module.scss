@@ -37,6 +37,36 @@
     align-items: center;
     gap: 8px;
     user-select: none;
+
+    // Позволяем переопределять flex-direction через CSS классы
+    &.nav-bar-button {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 4px !important;
+    }
+}
+
+.navBarButton {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4px !important;
+    justify-content: center !important;
+    display: flex !important;
+
+    .icon {
+        display: block !important;
+        margin-bottom: 4px !important;
+        order: 1 !important;
+    }
+
+    .Text {
+        display: block !important;
+        text-align: center !important;
+        order: 2 !important;
+        font-weight: 400 !important;
+        font-size: 12px !important;
+        line-height: 120% !important;
+    }
 }
 
 .small {

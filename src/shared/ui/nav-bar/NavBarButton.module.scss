@@ -1,44 +1,60 @@
 @use "@/shared/styles/theme/mixins" as mix;
 
 .button {
-    padding: 8px 0;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    height: 100%;
-    width: 100%;
-    color: var(--dark-grey);
+    padding: 8px 0 !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4px !important;
+    height: 100% !important;
+    width: 100% !important;
+    color: var(--dark-grey) !important;
+    display: flex !important;
+    justify-content: center !important;
 
     &:hover {
-        color: var(--secondary-color);
+        color: var(--secondary-color) !important;
     }
 
     &.active {
-        color: var(--secondary-color);
+        color: var(--secondary-color) !important;
     }
 
     &.desktop {
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 12px;
-        width: 100%;
-        border-radius: 10px;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 12px 12px !important;
+        width: 100% !important;
+        border-radius: 10px !important;
 
         &.active {
-            background-color: var(--background-navbar-button);
+            background-color: var(--background-navbar-button) !important;
         }
 
         .text {
-            font-size: 16px;
-            font-weight: 400;
+            font-size: 16px !important;
+            font-weight: 400 !important;
+        }
+
+        .icon {
+            margin-bottom: 0 !important;
         }
     }
+
+    // Принудительно устанавливаем вертикальное расположение для мобильной версии
+    .icon {
+        display: block !important;
+        margin-bottom: 4px !important;
+        order: 1 !important;
+    }
 }
+
 .text {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 120%;
-    text-align: center;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    line-height: 120% !important;
+    text-align: center !important;
+    display: block !important;
+    order: 2 !important;
 }

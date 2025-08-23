@@ -34,6 +34,15 @@
     --shadow-sm: 0px 2px 8px rgba(0, 0, 0, 0.1);
 
     --border-radius-lg: 12px;
+
+    // Nav-bar переменные для production
+    --nav-bar-button-flex-direction: column;
+    --nav-bar-button-align-items: center;
+    --nav-bar-button-gap: 4px;
+    --nav-bar-icon-display: block;
+    --nav-bar-icon-margin-bottom: 4px;
+    --nav-bar-text-display: block;
+    --nav-bar-text-text-align: center;
 }
 
 @media (prefers-color-scheme: dark) {

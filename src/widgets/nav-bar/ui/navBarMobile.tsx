@@ -24,7 +24,7 @@ export const NavBar = () => {
         pathname?.includes(route) ?? false;
 
     return (
-        <div className={s.root}>
+        <div className={`${s.root} nav-bar`}>
             <div className={s.navigation_wrapper}>
                 <NavBarButton
                     onClick={handleNavigate("/schedule")}

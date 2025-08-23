@@ -22,21 +22,26 @@ export const Button: FC<ButtonProps> = ({
     children,
     className,
     ...props
-}) => (
-    <button
-        type="button"
-        className={clsx(
-            s.button,
-            s[variant],
-            s[size],
-            {
-                [s.fullWidth]: fullWidth,
-            },
-            className
-        )}
-        {...props}
-    >
-        {icon && <span className={s.icon}>{icon}</span>}
-        <span className={s.Text}>{children}</span>
-    </button>
-);
+}) => {
+    const isNavBarButton = className?.includes("nav-bar-button");
+
+    return (
+        <button
+            type="button"
+            className={clsx(
+                s.button,
+                s[variant],
+                s[size],
+                {
+                    [s.fullWidth]: fullWidth,
+                    [s.navBarButton]: isNavBarButton,
+                },
+                className
+            )}
+            {...props}
+        >
+            {icon && <span className={s.icon}>{icon}</span>}
+            <span className={s.Text}>{children}</span>
+        </button>
+    );
+};
