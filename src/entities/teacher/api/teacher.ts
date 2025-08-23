@@ -41,6 +41,12 @@ export class TeachersApi {
     addTeacher: Endpoint<NewTeacher, TeacherResponse> = async (newTeacher) => {
         return api.post<TeacherResponse>("/teachers", newTeacher);
     };
+
+    getTeacher: Endpoint<{ teacherId: number }, TeacherResponse> = async ({
+        teacherId,
+    }) => {
+        return api.get<TeacherResponse>(`/teachers/${teacherId}`);
+    };
 }
 
 export const teachersApi = new TeachersApi();

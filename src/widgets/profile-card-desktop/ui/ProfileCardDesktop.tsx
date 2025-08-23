@@ -1,21 +1,31 @@
 import clsx from "clsx";
-import { useTranslations } from "next-intl";
 import { type FC, useState } from "react";
 
 import { type User, useUser } from "@/entities/user";
 import { ChangePhotoButton } from "@/features/change-photo";
-import { FileInstallButton } from "@/features/installation-files";
+import { TeacherFilesList } from "@/features/installation-files";
 import { UserAvatar } from "@/features/user-avatar";
 
 import s from "./ProfileCardDesktop.module.scss";
 
 type ProfileCardProps = {
-    file: { id: string; fileName: string; fileUrl: string };
+    teacherId?: number;
+    resolution: "desktop" | "mobile";
 };
 
 const UserInfo = ({ name, role }: Pick<User, "name" | "role">) => {
-    const t = useTranslations();
-    const roleText = t(`roles.${role.toLowerCase()}`);
+    const getRoleText = (role: string) => {
+        switch (role) {
+            case "TEACHER":
+                return "Учитель";
+            case "ADMIN":
+                return "Администратор";
+            case "STUDENT":
+                return "Ученик";
+            default:
+                return role;
+        }
+    };
 
     return (
         <div className={s.info}>
@@ -26,18 +36,18 @@ const UserInfo = ({ name, role }: Pick<User, "name" | "role">) => {
                     [s.admin]: role === "ADMIN",
                 })}
             >
-                {roleText}
+                {getRoleText(role)}
             </p>
         </div>
     );
 };
 
 export const ProfileCardDesktop: FC<ProfileCardProps> = ({
-    file: { fileName, fileUrl },
+    teacherId,
+    resolution,
 }) => {
     const { data: user, isLoading, isError } = useUser();
     const [avatarKey, setAvatarKey] = useState(0);
-    const t = useTranslations("profile");
 
     const handleAvatarUpdate = () => {
         setAvatarKey((prev) => prev + 1);
@@ -48,7 +58,7 @@ export const ProfileCardDesktop: FC<ProfileCardProps> = ({
     }
 
     if (isLoading) {
-        return <div className={s.root}>{t("loading")}</div>;
+        return <div className={s.root}>Загрузка...</div>;
     }
 
     if (!user) {
@@ -56,6 +66,20 @@ export const ProfileCardDesktop: FC<ProfileCardProps> = ({
     }
 
     const { name, role } = user;
+
+    // Показываем файлы учителя если есть teacherId
+    const renderFiles = () => {
+        if (role === "TEACHER" && teacherId) {
+            return (
+                <TeacherFilesList
+                    teacherId={teacherId}
+                    resolution={resolution}
+                />
+            );
+        }
+
+        return null;
+    };
 
     return (
         <div className={s.root}>
@@ -76,12 +100,7 @@ export const ProfileCardDesktop: FC<ProfileCardProps> = ({
                 </div>
                 <UserInfo name={name} role={role} />
             </div>
-            <p className={s.title}>{t("study-load")}</p>
-            <FileInstallButton
-                fileName={fileName}
-                fileUrl={fileUrl}
-                resolution="desktop"
-            />
+            {renderFiles()}
         </div>
     );
 };

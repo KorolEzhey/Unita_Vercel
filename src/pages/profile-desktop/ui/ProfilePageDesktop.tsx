@@ -1,8 +1,8 @@
 "use client";
 import "@/shared/styles/global.scss";
 
-import { useTranslations } from "next-intl";
-
+import { useTeacher } from "@/entities/teacher";
+import { useUser } from "@/entities/user";
 import { DesktopGuard } from "@/shared/ui";
 import { PageTitle } from "@/shared/ui/page-title";
 import { NavBar } from "@/widgets/nav-bar-desktop";
@@ -10,14 +10,19 @@ import { ProfileCardDesktop } from "@/widgets/profile-card-desktop";
 
 import s from "./ProfilePageDesktop.module.scss";
 
-const profileFile = {
-    id: "install-1",
-    fileName: "Иванов 2025.pdf",
-    fileUrl: "/files/Ivanov_2025.pdf",
-};
-
 export default function Home() {
-    const t = useTranslations("navigation");
+    const { data: user } = useUser();
+
+    // Используем хук учителя для получения данных
+    // Для учителей user.id = teacherId
+    const { data: teacher } = useTeacher(
+        user?.role === "TEACHER" ? user.id : 0
+    );
+
+    // Отладочная информация
+    console.log("ProfilePageDesktop - user:", user);
+    console.log("ProfilePageDesktop - teacher:", teacher);
+    console.log("ProfilePageDesktop - teacherId:", teacher?.teacherId);
 
     return (
         <DesktopGuard>
@@ -27,11 +32,14 @@ export default function Home() {
                 </div>
 
                 <div className={s.topbar}>
-                    <PageTitle title={t("profile")} />
+                    <PageTitle title="Профиль" />
                 </div>
 
                 <div className={s.content}>
-                    <ProfileCardDesktop file={profileFile} />
+                    <ProfileCardDesktop
+                        teacherId={teacher?.teacherId}
+                        resolution="desktop"
+                    />
                 </div>
             </div>
         </DesktopGuard>

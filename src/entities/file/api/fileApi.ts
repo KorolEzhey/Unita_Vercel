@@ -5,6 +5,7 @@ import { getUser } from "@/shared/api/users";
 import { FILE_LIMITS } from "@/shared/lib/constants";
 
 import type {
+    FileData,
     FileListResponse,
     FileUploadResponse,
     LessonFileListResponse,
@@ -109,12 +110,11 @@ export class FilesApi {
         return this.uploadFile(`${this.BASE_URL}/teacher/${teacherId}`, file);
     };
 
-    getTeacherFilesById: Endpoint<{ teacherId: number }, FileListResponse> =
-        async ({ teacherId }) => {
-            return api.get<FileListResponse>(
-                `${this.BASE_URL}/teacher/${teacherId}`
-            );
-        };
+    getTeacherFilesById: Endpoint<{ teacherId: number }, FileData[]> = async ({
+        teacherId,
+    }) => {
+        return api.get<FileData[]>(`${this.BASE_URL}/teacher/${teacherId}`);
+    };
 
     uploadStudentFile: Endpoint<{ file: File }, FileUploadResponse> = async ({
         file,
@@ -140,10 +140,10 @@ export class FilesApi {
         return this.uploadFile(`${this.BASE_URL}/class/${classId}`, file);
     };
 
-    getClassFiles: Endpoint<{ classId: number }, FileListResponse> = async ({
+    getClassFiles: Endpoint<{ classId: number }, FileData[]> = async ({
         classId,
     }) => {
-        return api.get<FileListResponse>(`${this.BASE_URL}/class/${classId}`);
+        return api.get<FileData[]>(`${this.BASE_URL}/class/${classId}`);
     };
 
     deleteFile: Endpoint<{ fileName: string }, void> = async ({ fileName }) => {

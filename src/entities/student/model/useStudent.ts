@@ -10,5 +10,6 @@ export const useStudent = (id: number) => {
             const { data } = await studentsApi.getStudent({ id });
             return data;
         },
+        enabled: !!id,
     });
 };

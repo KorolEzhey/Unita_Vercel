@@ -1,0 +1,25 @@
+.teacherFilesList {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.fileItem {
+    width: 100%;
+}
+
+.loading {
+    text-align: center;
+    padding: 16px;
+    color: var(--gray-color);
+    font-size: 14px;
+}
+
+.noFiles {
+    text-align: center;
+    padding: 16px;
+    color: var(--gray-color);
+    font-size: 14px;
+    font-style: italic;
+}

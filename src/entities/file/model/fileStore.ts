@@ -59,8 +59,8 @@ export class FileStore {
         try {
             this.setLoading(true);
             const response = await filesApi.getTeacherFilesById({ teacherId });
-            this.setFiles(response.data.files);
-            return response.data.files;
+            this.setFiles(response.data);
+            return response.data;
         } finally {
             this.setLoading(false);
         }
@@ -103,8 +103,8 @@ export class FileStore {
         try {
             this.setLoading(true);
             const response = await filesApi.getClassFiles({ classId });
-            this.setFiles(response.data.files);
-            return response.data.files;
+            this.setFiles(response.data);
+            return response.data;
         } finally {
             this.setLoading(false);
         }
