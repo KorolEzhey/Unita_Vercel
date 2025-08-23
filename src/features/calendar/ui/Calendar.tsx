@@ -115,7 +115,7 @@ export const Calendar: React.FC<CalendarProps> = ({
             day
         );
         const dayOfWeek = date.getDay();
-        return dayOfWeek === 0 || dayOfWeek === 6; // 0 = воскресенье, 6 = суббота
+        return dayOfWeek === 5 || dayOfWeek === 6; // 0 = воскресенье, 6 = суббота
     };
 
     const isSelected = (day: number) => {
