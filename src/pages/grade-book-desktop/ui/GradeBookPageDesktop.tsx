@@ -7,10 +7,10 @@ import { useEffect, useState } from "react";
 import { match } from "ts-pattern";
 
 import { classStore } from "@/entities/class";
+import { DesktopGuard } from "@/shared/ui";
 import { PageTitle } from "@/shared/ui/page-title";
 import { Select as SelectClass } from "@/shared/ui/select";
 import { SwitchTabs } from "@/shared/ui/switch";
-import { DesktopGuard } from "@/shared/ui";
 import { type Attendance, AttendanceTable } from "@/widgets/attendance-table";
 import {
     GradeBookTable,
